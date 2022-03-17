@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
 
 import { getAllNBAPlayers } from "./util/NBAApi";
+import { getSelectedPlayerInfo } from "./util/UtilityFun";
 
 import { PlayerInfo } from "./components/PlayerInfo/PlayerInfo";
 import { ComboBox } from "./components/UIComponents/ComboBoxSelect";
 import { SubmitButton } from "./components/UIComponents/Button";
 export default function Home() {
+  const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
+  const [resubmitDisplay, setResubmitDisplay] = useState(false);
+  const [playerInfo, setplayerInfo] = useState({});
+
   const [nbaPlayer, setNbaPlayer] = useState({
     allPlayers: [],
     searchedPlayersName: "", // Name of player input by user
-    currentPlayer: {}, // Currrent Player Saved To get from data
+    // currentPlayer: {}, // Currrent Player Saved To get from data
     currentPlayerFullName: "",
-    playerTeamID: "",
-    playerTeam: "",
-    playerHeadshot: "",
+    // playerTeamID: "",
+    // playerTeam: "",
+    // playerHeadshot: "",
     selectedOption: { value: "-", label: "Type Player Name Here" },
-    lastTenGamesAverages: {},
-    displayPlayerInfo: false,
+    // lastTenGamesAverages: {},
+    myObject: {},
   });
 
   useEffect(() => {
@@ -36,10 +41,26 @@ export default function Home() {
         ...nbaPlayer,
         allPlayers: formattedListOfPlayersForSelect,
       });
+      setRetrievedAllPlayers(true);
     };
 
-    getData();
-  }, []);
+    !retrievedAllPlayers ? getData() : "";
+
+    const showPlayerData = async () => {
+      const playerInfoResponseObject = await getSelectedPlayerInfo(
+        nbaPlayer.selectedOption.value
+      );
+      console.log(
+        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo",
+        playerInfoResponseObject
+      );
+
+      setplayerInfo({ ...playerInfoResponseObject });
+    };
+
+    nbaPlayer.selectedOption.value !== "-" ? showPlayerData() : "";
+  }, [resubmitDisplay]);
+
   return (
     <>
       <div>
@@ -49,8 +70,17 @@ export default function Home() {
           setNbaPlayer={setNbaPlayer}
         />
 
-        <SubmitButton displayPlayerInfo={nbaPlayer.displayPlayerInfo} />
-        
+        <SubmitButton
+          resubmitDisplay={resubmitDisplay}
+          setResubmit={setResubmitDisplay}
+        />
+
+        {/* If playerinfo object is empty dont render */}
+        {JSON.stringify(playerInfo) !== "{}" ? (
+          <PlayerInfo playerInfo={playerInfo} />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

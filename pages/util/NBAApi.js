@@ -49,7 +49,7 @@ export function getAllNBAPlayers() {
     .then((response) => {
       // Should be array of ALl players in NBA history
       let playersAsArray = response.data.api.players;
-      // console.log(playersAsArray);
+      console.log(playersAsArray);
 
       // Get list of all players names for suggestion box
       let playerNames = playersAsArray.map(function (player) {

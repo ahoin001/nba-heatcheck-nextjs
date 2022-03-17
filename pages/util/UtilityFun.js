@@ -1,6 +1,7 @@
 import { getPlayerByName, getPlayerStats, getPlayerTeam } from "./NBAApi";
 
 export const getSelectedPlayerInfo = async (playerName) => {
+  console.log("GETTING SELECTED PLAYERINFO%%%%%%%%%%%%%%%%");
   // Hold Values and not have to repeatedly call state after to reference data
   let stateObject = {};
 
@@ -10,14 +11,15 @@ export const getSelectedPlayerInfo = async (playerName) => {
   let playerLastName = playerName.split(" ")[1];
   // console.log('Player Last Name: ', playerLastName);
 
-  stateObject.currentPlayerFullName = playerName;
+  // TODO Might not need this line
+  // stateObject.currentPlayerFullName = playerName;
 
   const returnedPlayerByName = await getPlayerByName(
     playerFirstName,
     playerLastName
   );
 
-  console.log("I AM RETURNED FROM GETPLAYER", returnedPlayer);
+  console.log("I AM RETURNED FROM GETPLAYER", returnedPlayerByName);
   stateObject.currentPlayer = returnedPlayerByName;
 
   const returnedPlayerTeam = await getPlayerTeam(
@@ -104,23 +106,26 @@ export const getSelectedPlayerInfo = async (playerName) => {
     lastTenGamesAverages.games.push(game);
   });
 
-  lastTenGamesAverages.playerPPG = pointsSum / res.length;
-  lastTenGamesAverages.playerRPG = reboundsSum / res.length;
-  lastTenGamesAverages.playerAPG = assistsSum / res.length;
-  lastTenGamesAverages.playerSPG = stealsSum / res.length;
-  lastTenGamesAverages.playerBPG = blocksSum / res.length;
-  lastTenGamesAverages.playerTOPG = turnOversSum / res.length;
+  lastTenGamesAverages.playerPPG = pointsSum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerRPG =
+    reboundsSum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerAPG = assistsSum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerSPG = stealsSum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerBPG = blocksSum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerTOPG =
+    turnOversSum / lastTenGamesPlayerPlayed.length;
 
-  lastTenGamesAverages.playerFGAPG = fgASum / res.length;
-  lastTenGamesAverages.playerFGMPG = fgMSum / res.length;
+  lastTenGamesAverages.playerFGAPG = fgASum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerFGMPG = fgMSum / lastTenGamesPlayerPlayed.length;
   lastTenGamesAverages.FGPercent = (fgMSum / fgASum).toFixed(2);
 
-  lastTenGamesAverages.playerFTAPG = fTASum / res.length;
-  lastTenGamesAverages.playerFTAMPG = fTMSum / res.length;
+  lastTenGamesAverages.playerFTAPG = fTASum / lastTenGamesPlayerPlayed.length;
+  lastTenGamesAverages.playerFTAMPG = fTMSum / lastTenGamesPlayerPlayed.length;
   lastTenGamesAverages.FTPercent = (fTMSum / fTASum).toFixed(2);
 
   stateObject.lastTenGamesAverages = lastTenGamesAverages;
 
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&: ",lastTenGamesAverages)
-  
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&: ", lastTenGamesAverages);
+
+  return stateObject
 };

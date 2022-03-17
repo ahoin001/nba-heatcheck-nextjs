@@ -1,5 +1,5 @@
 import { Select } from "chakra-react-select";
-import { FormControl } from "@chakra-ui/react";
+import { Box, FormControl } from "@chakra-ui/react";
 
 export const ComboBox = ({ listOfOptions, nbaPlayer, setNbaPlayer }) => {
   const handleChange = (selectedOption) => {
@@ -16,15 +16,18 @@ export const ComboBox = ({ listOfOptions, nbaPlayer, setNbaPlayer }) => {
 
   return (
     <FormControl p={4}>
-      <Select
-        instanceId={"postType"}
-        name="players"
-        onChange={handleChange}
-        options={listOfOptions}
-        placeholder="Select a player.."
-        closeMenuOnSelect={true}
-        size="sm"
-      />
+      <Box maxW={["md", "4xl"]}>
+        {" "}
+        <Select
+          instanceId={"postType"}
+          name="players"
+          onChange={handleChange}
+          options={listOfOptions}
+          placeholder="Select a player.."
+          closeMenuOnSelect={true}
+          size="sm"
+        />
+      </Box>
     </FormControl>
   );
 };
