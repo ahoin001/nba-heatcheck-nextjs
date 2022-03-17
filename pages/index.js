@@ -1,33 +1,32 @@
 import { useState, useEffect } from "react";
+import { Spinner } from "@chakra-ui/react";
 
 import { getAllNBAPlayers } from "./util/NBAApi";
 import { getSelectedPlayerInfo } from "./util/UtilityFun";
 
 import { PlayerInfo } from "./components/PlayerInfo/PlayerInfo";
 import { ComboBox } from "./components/UIComponents/ComboBoxSelect";
+import { LineGraph } from "./components/UIComponents/LineGraph";
 import { SubmitButton } from "./components/UIComponents/Button";
 export default function Home() {
   const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
   const [resubmitDisplay, setResubmitDisplay] = useState(false);
   const [playerInfo, setplayerInfo] = useState({});
+  const [isLoading, setisLoading] = useState(false);
 
   const [nbaPlayer, setNbaPlayer] = useState({
     allPlayers: [],
     searchedPlayersName: "", // Name of player input by user
-    // currentPlayer: {}, // Currrent Player Saved To get from data
     currentPlayerFullName: "",
-    // playerTeamID: "",
-    // playerTeam: "",
-    // playerHeadshot: "",
     selectedOption: { value: "-", label: "Type Player Name Here" },
-    // lastTenGamesAverages: {},
+
     myObject: {},
   });
 
   useEffect(() => {
     const getData = async () => {
       const playerNames = await getAllNBAPlayers();
-
+      setisLoading(true);
       //** Format player names to be used in combobox component
       const formattedListOfPlayersForSelect = playerNames.map((player) => {
         return {
@@ -42,11 +41,13 @@ export default function Home() {
         allPlayers: formattedListOfPlayersForSelect,
       });
       setRetrievedAllPlayers(true);
+      setisLoading(false);
     };
 
     !retrievedAllPlayers ? getData() : "";
 
     const showPlayerData = async () => {
+      setisLoading(true);
       const playerInfoResponseObject = await getSelectedPlayerInfo(
         nbaPlayer.selectedOption.value
       );
@@ -56,6 +57,7 @@ export default function Home() {
       );
 
       setplayerInfo({ ...playerInfoResponseObject });
+      setisLoading(false);
     };
 
     nbaPlayer.selectedOption.value !== "-" ? showPlayerData() : "";
@@ -75,12 +77,13 @@ export default function Home() {
           setResubmit={setResubmitDisplay}
         />
 
-        {/* If playerinfo object is empty dont render */}
-        {JSON.stringify(playerInfo) !== "{}" ? (
-          <PlayerInfo playerInfo={playerInfo} />
-        ) : (
+        {JSON.stringify(playerInfo) === "{}" ? (
           ""
+        ) : (
+          <PlayerInfo playerInfo={playerInfo} />
         )}
+
+        {/* <LineChart /> */}
       </div>
     </>
   );

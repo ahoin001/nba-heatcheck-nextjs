@@ -3,14 +3,14 @@ import { Box, FormControl } from "@chakra-ui/react";
 
 export const ComboBox = ({ listOfOptions, nbaPlayer, setNbaPlayer }) => {
   const handleChange = (selectedOption) => {
-    const selectPlayer = {
+    const userOptionSelect = {
       value: selectedOption.value,
       label: selectedOption.label,
     };
 
     setNbaPlayer({
       ...nbaPlayer,
-      selectedOption: selectPlayer,
+      selectedOption: userOptionSelect,
     });
   };
 
