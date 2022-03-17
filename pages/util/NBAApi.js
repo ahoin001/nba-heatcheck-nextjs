@@ -35,10 +35,11 @@ export async function getPlayerByName(playerFirstName, playerLastName) {
 }
 
 // Retrieves list of all players in NBA history and save it in state
-export async function getAllNBAPlayers() {
-  return await axios({
+export function getAllNBAPlayers() {
+  console.log("STARTING THE CALL");
+  return axios({
     method: "GET",
-    url: "${baseUrl}/players/country/USA",
+    url: `${baseUrl}/players/country/USA`,
     headers: {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
@@ -58,7 +59,7 @@ export async function getAllNBAPlayers() {
         return `${player.firstName} ${player.lastName}`;
       });
 
-      // console.log(playerNames);
+        console.log(playerNames);
       return playerNames;
     })
     .catch((error) => {
