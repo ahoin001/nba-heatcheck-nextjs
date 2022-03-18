@@ -17,12 +17,12 @@ import { Box, VStack, Text } from "@chakra-ui/react";
 
 export const Statbox = ({ Average, Stat }) => {
   return (
-    <Box p={1}>
-      <Text fontWeight={"bold"} mb={2}>
+    <VStack p={2}>
+      <Text fontSize={"3xl"} fontWeight={"bold"} mb={2}>
         {Stat}
       </Text>
 
-      <Text fontWeight={"bold"}>{Average}</Text>
-    </Box>
+      <Text fontSize={"2xl"} fontWeight={"semibold"}>{Average}</Text>
+    </VStack>
   );
 };

@@ -1,16 +1,5 @@
 import { Skeleton, Box, Heading, VStack } from "@chakra-ui/react";
 
-const playerInfo = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  flex: "1 1 auto" /* Positive flex-shrink */,
-  marginTop: "3.2rem",
-  color: "rgb(236,239,241)",
-  // border: '1px solid green'
-};
-
 export const PlayerInfo = ({ playerInfo }) => {
   if (JSON.stringify(playerInfo) === "{}") {
     return <Skeleton height={"500px"} />;
@@ -18,10 +7,13 @@ export const PlayerInfo = ({ playerInfo }) => {
     return (
       <>
         <Box>
-          <VStack spacing={8}>
-            <Heading size="3xl"> {playerInfo.currentPlayer.firstName} </Heading>
+          <VStack spacing={8} align={"center"} justify={"center"}>
+            <Heading size="3xl" fontWeight={"medium"}>
+              {" "}
+              {playerInfo.currentPlayer.firstName}{" "}
+            </Heading>
             <Heading size="4xl"> {playerInfo.currentPlayer.lastName} </Heading>
-            <Heading size="2xl">
+            <Heading size="2xl" fontWeight={"medium"}>
               {" "}
               Position: {playerInfo.currentPlayer.leagues.standard.pos}{" "}
             </Heading>

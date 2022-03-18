@@ -3,6 +3,8 @@ import { ComboBox } from "../UIComponents/ComboBoxSelect";
 
 import { options, statToShow } from "./LineGraphImports";
 
+import { Box, Center, Heading, SimpleGrid, VStack } from "@chakra-ui/react";
+
 import {
   LineChart,
   Line,
@@ -31,46 +33,37 @@ export const LineGraph = ({ LastTenGames }) => {
   console.log(selectedOptionTwo.label);
   return (
     <>
-      <div>
+      <VStack>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
-        <h1> LAST TEN GAMES VISUAL</h1>
 
-        <div>
-          <ComboBox
-            listOfOptions={options}
-            value={selectedOptionOne}
-            isSearchable={false}
-            closeMenuOnSelect={true}
-            handleChange={(userSelectedOption) =>
-              setSelectedOptionOne(userSelectedOption)
-            }
-            placeholderText="Select a stat"
-          />
-          <ComboBox
-            listOfOptions={options}
-            value={selectedOptionTwo}
-            isSearchable={false}
-            closeMenuOnSelect={true}
-            handleChange={(userSelectedOption) =>
-              setSelectedOptionTwo(userSelectedOption)
-            }
-            placeholderText="Compare a stat!"
-          />
-        </div>
+        <Heading> LAST TEN GAMES VISUAL</Heading>
 
-        <ResponsiveContainer width="99%" height={400}>
+        <ComboBox
+          listOfOptions={options}
+          value={selectedOptionOne}
+          isSearchable={false}
+          closeMenuOnSelect={true}
+          handleChange={(userSelectedOption) =>
+            setSelectedOptionOne(userSelectedOption)
+          }
+          placeholderText="Select a stat"
+        />
+
+        <ComboBox
+          listOfOptions={options}
+          value={selectedOptionTwo}
+          isSearchable={false}
+          closeMenuOnSelect={true}
+          handleChange={(userSelectedOption) =>
+            setSelectedOptionTwo(userSelectedOption)
+          }
+          placeholderText="Compare a stat!"
+        />
+
+        <Box></Box>
+        <ResponsiveContainer width="88%" maxWidth="200px" height={400}>
           {JSON.stringify(LastTenGames) !== "{}" ? (
-            <LineChart
-              //   className="line-chart"
-              data={statToShow(LastTenGames)}
-              // data={() => dataSet(LastTenGames)}
-              margin={{
-                top: 30,
-                right: 30,
-                left: 0,
-                bottom: 0,
-              }}
-            >
+            <LineChart data={statToShow(LastTenGames)}>
               {/* {console.log("++++++++++++++++ DATA BEING USED IS", dataSet(LastTenGames))} */}
               {console.log(
                 "################ WORKING DATA OBJECT",
@@ -100,7 +93,7 @@ export const LineGraph = ({ LastTenGames }) => {
         </ResponsiveContainer>
 
         <div className="divider"> </div>
-      </div>
+      </VStack>
     </>
   );
 };

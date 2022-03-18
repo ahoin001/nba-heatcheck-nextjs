@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 
 export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
   return (
-    <Box w={['100%', "2xl","5xl"]} my={10} px={5}>
+    <Box px={[6, 8]} py={[4]} w={["80%", "80%", "4xl"]}>
       <Select
         instanceId={"postType"}
         name="players"

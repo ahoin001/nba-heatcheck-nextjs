@@ -1,5 +1,5 @@
 import { Statbox } from "./Statbox";
-import { Center, Heading, HStack, Box } from "@chakra-ui/react";
+import { Heading, HStack, Box } from "@chakra-ui/react";
 
 export const StatboxAverages = ({
   playerPPG,
@@ -15,41 +15,13 @@ export const StatboxAverages = ({
   playerFTAMPG,
   FTPercent,
 }) => {
-  //   const container = {
-  //     display: "flex",
-  //     flexDirection: "column",
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //     flex: "1 1 auto" /* Positive flex-shrink */,
-  //     width: "100%",
-  //     margin: "20px auto 30px auto",
-  //     // border: '1px solid yellow'
-  //   };
-
-  //   const boxScore = {
-  //     display: "flex",
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //     flex: "1 1 auto" /* Positive flex-shrink */,
-  //     color: "blue",
-  //     // border: '1px solid blue'
-  //   };
-
-  //   const header = {
-  //     textAlign: "center",
-  //     fontFamily: "Rajdhani",
-  //     fontWeight: 400,
-  //     lineHeight: 1.5,
-  //     color: "#eceff1",
-  //   };
-
   return (
     <Box>
-      <Center>
-        <Heading size={"xl"} p={8}> CURRENT SEASON AVERAGES </Heading>
-      </Center>
+      <Heading size={"3xl"} p={[6, 10, 12]} textAlign={"center"}>
+        CURRENT SEASON AVERAGES
+      </Heading>
 
-      <HStack justify={"center"}>
+      <HStack justify={"center"} wrap={"wrap"} px={[3, 6, 9]} mb={9}>
         <Statbox Stat={"PPG"} Average={playerPPG} />
         <Statbox Stat={"RPG"} Average={playerRPG} />
         <Statbox Stat={"APG"} Average={playerAPG} />
@@ -64,44 +36,5 @@ export const StatboxAverages = ({
         <Statbox Stat={"FT%"} Average={FTPercent} />
       </HStack>
     </Box>
-    // <div style={container}>
-    //   {this.props.boxSize === "large" ? (
-    //     <React.Fragment>
-    //       <h1 style={header}> '18 - '19 SEASON AVERAGES </h1>
-
-    //       <div style={boxScore}>
-    //         <Stat Stat={"PPG"} Average={this.props.playerPPG} />
-    //         <Stat Stat={"RPG"} Average={this.props.playerRPG} />
-    //         <Stat Stat={"APG"} Average={this.props.playerAPG} />
-    //         <Stat Stat={"SPG"} Average={this.props.playerSPG} />
-    //         <Stat Stat={"BPG"} Average={this.props.playerBPG} />
-    //         <Stat Stat={"TO"} Average={this.props.playerTOPG} />
-    //         <Stat Stat={"FGA"} Average={this.props.playerFGAPG} />
-    //         <Stat Stat={"FGM"} Average={this.props.playerFGMPG} />
-    //         <Stat Stat={"FG%"} Average={this.props.FGPercent} />
-    //         <Stat Stat={"FTA"} Average={this.props.playerFTAPG} />
-    //         <Stat Stat={"FM"} Average={this.props.playerFTAMPG} />
-    //         <Stat Stat={"FT%"} Average={this.props.FTPercent} />
-    //       </div>
-    //     </React.Fragment>
-    //   ) : (
-    //     <React.Fragment>
-    //       <h1 style={header}> '18 - '19 SEASON Averages </h1>
-
-    //       <div style={boxScore}>
-    //         <Stat Stat={"PPG"} Average={this.props.playerPPG} />
-    //         <Stat Stat={"RPG"} Average={this.props.playerRPG} />
-    //         <Stat Stat={"APG"} Average={this.props.playerAPG} />
-    //         <Stat Stat={"SPG"} Average={this.props.playerSPG} />
-    //         <Stat Stat={"BPG"} Average={this.props.playerBPG} />
-    //         {/* <Stat Stat={"TO"} Average={this.props.playerTOPG} />
-    //                       <Stat Stat={"FGA"} Average={this.props.playerFGAPG} />
-    //                       <Stat Stat={"FGM"} Average={this.props.playerFGMPG} /> */}
-    //       </div>
-    //     </React.Fragment>
-    //   )}
-
-    //   <div className="divider"> </div>
-    // </div>
   );
 };

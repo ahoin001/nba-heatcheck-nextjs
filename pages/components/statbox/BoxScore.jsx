@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { StatboxAverages } from "./StatboxAverages";
 
 export const BoxScore = ({ playerAvgs }) => {
@@ -5,7 +6,7 @@ export const BoxScore = ({ playerAvgs }) => {
     return <div></div>;
   } else {
     return (
-      <div>
+      <Box border={"2px"}>
         <StatboxAverages
           //   boxSize={this.props.boxSize}
           playerPPG={playerAvgs.playerPPG}
@@ -21,7 +22,7 @@ export const BoxScore = ({ playerAvgs }) => {
           playerFTAMPG={playerAvgs.playerFTAMPG}
           FTPercent={playerAvgs.FTPercent}
         />
-      </div>
+      </Box>
     );
   }
 };

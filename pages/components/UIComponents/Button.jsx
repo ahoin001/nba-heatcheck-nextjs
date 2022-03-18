@@ -3,6 +3,7 @@ import React from "react";
 export const SubmitButton = ({ resubmitDisplay, setResubmit }) => {
   return (
     <Button
+    p={10}
       onClick={() => {
         setResubmit(!resubmitDisplay);
       }}
