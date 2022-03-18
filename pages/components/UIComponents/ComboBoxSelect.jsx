@@ -1,19 +1,7 @@
 import { Select } from "chakra-react-select";
 import { Box, FormControl } from "@chakra-ui/react";
 
-export const ComboBox = ({ listOfOptions, nbaPlayer, setNbaPlayer }) => {
-  const handleChange = (selectedOption) => {
-    const userOptionSelect = {
-      value: selectedOption.value,
-      label: selectedOption.label,
-    };
-
-    setNbaPlayer({
-      ...nbaPlayer,
-      selectedOption: userOptionSelect,
-    });
-  };
-
+export const ComboBox = ({ handleChange, listOfOptions,placeholderText }) => {
   return (
     <FormControl p={4}>
       <Box maxW={["md", "4xl"]}>
@@ -23,9 +11,9 @@ export const ComboBox = ({ listOfOptions, nbaPlayer, setNbaPlayer }) => {
           name="players"
           onChange={handleChange}
           options={listOfOptions}
-          placeholder="Select a player.."
+          placeholder={placeholderText}
           closeMenuOnSelect={true}
-          size="sm"
+          
         />
       </Box>
     </FormControl>

@@ -12,6 +12,7 @@ export default function Home() {
   const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
   const [resubmitDisplay, setResubmitDisplay] = useState(false);
   const [playerInfo, setplayerInfo] = useState({});
+  const [lastTenGamesInfo, setlastTenGamesInfo] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
   const [nbaPlayer, setNbaPlayer] = useState({
@@ -48,28 +49,41 @@ export default function Home() {
 
     const showPlayerData = async () => {
       setisLoading(true);
-      const playerInfoResponseObject = await getSelectedPlayerInfo(
+      const [playerInfo, lastTenGamesInfo] = await getSelectedPlayerInfo(
         nbaPlayer.selectedOption.value
       );
-      console.log(
-        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo",
-        playerInfoResponseObject
-      );
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo", playerInfo);
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Last TEN ", lastTenGamesInfo);
 
-      setplayerInfo({ ...playerInfoResponseObject });
-      setisLoading(false);
+      setplayerInfo({ ...playerInfo });
+      setlastTenGamesInfo({...lastTenGamesInfo});
+      // setisLoading(false);
     };
 
     nbaPlayer.selectedOption.value !== "-" ? showPlayerData() : "";
   }, [resubmitDisplay]);
+
+  const handleComboBoxChange = (selectedOption) => {
+    const userOptionSelect = {
+      value: selectedOption.value,
+      label: selectedOption.label,
+    };
+
+    setNbaPlayer({
+      ...nbaPlayer,
+      selectedOption: userOptionSelect,
+    });
+  };
 
   return (
     <>
       <div>
         <ComboBox
           listOfOptions={nbaPlayer.allPlayers}
+          handleChange={handleComboBoxChange}
           nbaPlayer={nbaPlayer}
           setNbaPlayer={setNbaPlayer}
+          placeholderText="Select a player..."
         />
 
         <SubmitButton
@@ -83,7 +97,7 @@ export default function Home() {
           <PlayerInfo playerInfo={playerInfo} />
         )}
 
-        {/* <LineChart /> */}
+        {lastTenGamesInfo ? <LineGraph LastTenGames={lastTenGamesInfo} /> : ""}
       </div>
     </>
   );
