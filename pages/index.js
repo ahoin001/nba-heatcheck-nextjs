@@ -6,7 +6,7 @@ import { getSelectedPlayerInfo } from "./util/UtilityFun";
 
 import { PlayerInfo } from "./components/PlayerInfo/PlayerInfo";
 import { ComboBox } from "./components/UIComponents/ComboBoxSelect";
-import { LineGraph } from "./components/UIComponents/LineGraph";
+import { LineGraph } from "./components/LineChart/LineGraph";
 import { SubmitButton } from "./components/UIComponents/Button";
 export default function Home() {
   const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
