@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Spinner } from "@chakra-ui/react";
+import { Box, Center, SimpleGrid } from "@chakra-ui/react";
 
 import { getAllNBAPlayers } from "./util/NBAApi";
 import { getSelectedPlayerInfo } from "./util/UtilityFun";
@@ -8,6 +8,9 @@ import { PlayerInfo } from "./components/PlayerInfo/PlayerInfo";
 import { ComboBox } from "./components/UIComponents/ComboBoxSelect";
 import { LineGraph } from "./components/LineChart/LineGraph";
 import { SubmitButton } from "./components/UIComponents/Button";
+
+import { BoxScore } from "./components/statbox/BoxScore";
+
 export default function Home() {
   const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
   const [resubmitDisplay, setResubmitDisplay] = useState(false);
@@ -56,7 +59,7 @@ export default function Home() {
       console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Last TEN ", lastTenGamesInfo);
 
       setplayerInfo({ ...playerInfo });
-      setlastTenGamesInfo({...lastTenGamesInfo});
+      setlastTenGamesInfo(lastTenGamesInfo);
       // setisLoading(false);
     };
 
@@ -77,19 +80,26 @@ export default function Home() {
 
   return (
     <>
-      <div>
-        <ComboBox
-          listOfOptions={nbaPlayer.allPlayers}
-          handleChange={handleComboBoxChange}
-          nbaPlayer={nbaPlayer}
-          setNbaPlayer={setNbaPlayer}
-          placeholderText="Select a player..."
-        />
+      <SimpleGrid columns={1} spacingY="80px">
+        <Box>
+          <Center>
+            {" "}
+            <ComboBox
+              listOfOptions={nbaPlayer.allPlayers}
+              handleChange={handleComboBoxChange}
+              nbaPlayer={nbaPlayer}
+              setNbaPlayer={setNbaPlayer}
+              placeholderText="Select a player..."
+            />
+          </Center>
 
-        <SubmitButton
-          resubmitDisplay={resubmitDisplay}
-          setResubmit={setResubmitDisplay}
-        />
+          <Center>
+            <SubmitButton
+              resubmitDisplay={resubmitDisplay}
+              setResubmit={setResubmitDisplay}
+            />
+          </Center>
+        </Box>
 
         {JSON.stringify(playerInfo) === "{}" ? (
           ""
@@ -97,8 +107,10 @@ export default function Home() {
           <PlayerInfo playerInfo={playerInfo} />
         )}
 
-        {lastTenGamesInfo ? <LineGraph LastTenGames={lastTenGamesInfo} /> : ""}
-      </div>
+        {lastTenGamesInfo ? <BoxScore playerAvgs={lastTenGamesInfo} /> : ""}
+
+        {/* {lastTenGamesInfo ? <LineGraph LastTenGames={lastTenGamesInfo} /> : ""} */}
+      </SimpleGrid>
     </>
   );
 }

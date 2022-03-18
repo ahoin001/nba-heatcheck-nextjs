@@ -1,21 +1,17 @@
 import { Select } from "chakra-react-select";
-import { Box, FormControl } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
-export const ComboBox = ({ handleChange, listOfOptions,placeholderText }) => {
+export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
   return (
-    <FormControl p={4}>
-      <Box maxW={["md", "4xl"]}>
-        {" "}
-        <Select
-          instanceId={"postType"}
-          name="players"
-          onChange={handleChange}
-          options={listOfOptions}
-          placeholder={placeholderText}
-          closeMenuOnSelect={true}
-          
-        />
-      </Box>
-    </FormControl>
+    <Box w={['100%', "2xl","5xl"]} my={10} px={5}>
+      <Select
+        instanceId={"postType"}
+        name="players"
+        onChange={handleChange}
+        options={listOfOptions}
+        placeholder={placeholderText}
+        closeMenuOnSelect={true}
+      />
+    </Box>
   );
 };
