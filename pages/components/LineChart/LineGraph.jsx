@@ -1,13 +1,7 @@
 import { useState } from "react";
 import { ComboBox } from "../UIComponents/ComboBoxSelect";
 
-import {
-  options,
-  data,
-  CustomToolTip,
-  statToolTip,
-  statToShow,
-} from "./LineGraphImports";
+import { options, statToShow } from "./LineGraphImports";
 
 import {
   LineChart,
@@ -23,16 +17,18 @@ import {
 export const LineGraph = ({ LastTenGames }) => {
   const [selectedOptionOne, setSelectedOptionOne] = useState({
     value: "PPG",
-    label: "PTS",
+    label: "Points",
   });
   const [selectedOptionTwo, setSelectedOptionTwo] = useState({
-    value: "PPG",
-    label: "PTS",
+    value: "RPG",
+    label: "Rebounds",
   });
 
   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
   console.log(selectedOptionOne);
-  console.log(selectedOptionOne.value);
+  console.log(selectedOptionOne.label);
+  console.log(selectedOptionTwo);
+  console.log(selectedOptionTwo.label);
   return (
     <>
       <div>
@@ -63,12 +59,11 @@ export const LineGraph = ({ LastTenGames }) => {
         </div>
 
         <ResponsiveContainer width="99%" height={400}>
-          {/* {console.log("++++++++++++++++ VALUE BEING USED IS", selectedOption.value)} */}
           {JSON.stringify(LastTenGames) !== "{}" ? (
             <LineChart
               //   className="line-chart"
-              data={statToShow(selectedOptionOne.value, LastTenGames)}
-              // data={() => data()}
+              data={statToShow(LastTenGames)}
+              // data={() => dataSet(LastTenGames)}
               margin={{
                 top: 30,
                 right: 30,
@@ -76,23 +71,28 @@ export const LineGraph = ({ LastTenGames }) => {
                 bottom: 0,
               }}
             >
+              {/* {console.log("++++++++++++++++ DATA BEING USED IS", dataSet(LastTenGames))} */}
+              {console.log(
+                "################ WORKING DATA OBJECT",
+                statToShow(LastTenGames)
+              )}
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
-              <Tooltip content={<CustomToolTip />} />
-              {/* <Tooltip /> */}
+
+              <Tooltip />
               <Legend />
               <Line
                 type="monotone"
-                // dataKey={"Assists"}
-                dataKey={statToolTip(selectedOptionOne.value)}
+                dataKey={selectedOptionOne.label}
                 stroke="#8884d8"
               />
-              {/* <Line
+
+              <Line
                 type="monotone"
-                dataKey={statToolTip(selectedOptionTwo.value)}
+                dataKey={selectedOptionTwo.label}
                 stroke="green"
-              /> */}
+              />
             </LineChart>
           ) : (
             " "
