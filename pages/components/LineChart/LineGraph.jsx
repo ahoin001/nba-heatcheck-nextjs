@@ -33,7 +33,7 @@ export const LineGraph = ({ LastTenGames }) => {
   console.log(selectedOptionTwo.label);
   return (
     <>
-      <VStack>
+      <VStack w={"container.md"}>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
 
         <Heading> LAST TEN GAMES VISUAL</Heading>
@@ -60,15 +60,18 @@ export const LineGraph = ({ LastTenGames }) => {
           placeholderText="Compare a stat!"
         />
 
-        <Box></Box>
-        <ResponsiveContainer width="88%" maxWidth="200px" height={400}>
+        {/* <Box></Box> */}
+        <ResponsiveContainer width="90%" height={400}>
           {JSON.stringify(LastTenGames) !== "{}" ? (
-            <LineChart data={statToShow(LastTenGames)}>
-              {/* {console.log("++++++++++++++++ DATA BEING USED IS", dataSet(LastTenGames))} */}
-              {console.log(
-                "################ WORKING DATA OBJECT",
-                statToShow(LastTenGames)
-              )}
+            <LineChart
+              data={statToShow(LastTenGames)}
+              margin={{
+                top: 30,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />

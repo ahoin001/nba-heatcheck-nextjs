@@ -81,10 +81,11 @@ export default function Home() {
 
   return (
     <>
-      <Box height={"100vh"}>
+      <Box height={"100vh"} >
         <Flex
           direction={"column"}
-          spacingY="80px"
+          wrap={"wrap"}
+          // spacingY="180px"
           justify={"center"}
           align={"center"}
         >
