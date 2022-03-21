@@ -84,6 +84,7 @@ export default function Home() {
       <Box height={"100vh"} >
         <Flex
           direction={"column"}
+          // TODO Look up why this resolves probelm with contenet smushing when resizing to smaller screen
           wrap={"wrap"}
           // spacingY="180px"
           justify={"center"}
