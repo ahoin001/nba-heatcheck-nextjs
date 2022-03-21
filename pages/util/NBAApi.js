@@ -52,15 +52,15 @@ export function getAllNBAPlayers() {
       console.log(playersAsArray);
 
       // Get list of all players names for suggestion box
-      let playerNames = playersAsArray.map(function (player) {
+      let data = playersAsArray.map(function (player) {
         // return List of player full names
         // TODO Would like space between names but need to figure how to make
         // Input component ignore spaces or create a new component
         return `${player.firstName} ${player.lastName}`;
       });
 
-        console.log(playerNames);
-      return playerNames;
+        console.log(data);
+      return data;
     })
     .catch((error) => {
       console.log(error);

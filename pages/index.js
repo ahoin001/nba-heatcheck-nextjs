@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Box, Spacer, Flex, SimpleGrid } from "@chakra-ui/react";
+import { useQuery } from "react-query";
+import { Box, Flex } from "@chakra-ui/react";
 
 import { getAllNBAPlayers } from "./util/NBAApi";
 import { getSelectedPlayerInfo } from "./util/UtilityFun";
@@ -13,59 +14,78 @@ import { PlayerInfo } from "./components/PlayerInfo/PlayerInfo";
 import { BoxScore } from "./components/statbox/BoxScore";
 
 export default function Home() {
-  const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
+  // const [retrievedAllPlayers, setRetrievedAllPlayers] = useState(false);
   const [resubmitDisplay, setResubmitDisplay] = useState(false);
   const [playerInfo, setplayerInfo] = useState({});
   const [lastTenGamesInfo, setlastTenGamesInfo] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
 
   const [nbaPlayer, setNbaPlayer] = useState({
-    allPlayers: [],
+    // selectablePlayers: [],
     searchedPlayersName: "", // Name of player input by user
     currentPlayerFullName: "",
-    selectedOption: { value: "-", label: "Type Player Name Here" },
-
-    myObject: {},
+    selectedOption: { value: "-", label: "Type Player Name Here" }
   });
 
-  useEffect(() => {
-    const getData = async () => {
-      const playerNames = await getAllNBAPlayers();
-      setisLoading(true);
-      //** Format player names to be used in combobox component
-      const formattedListOfPlayersForSelect = playerNames.map((player) => {
-        return {
-          value: player,
-          label: player,
-        };
-      });
+  const { data, error, isError, isLoading } = useQuery(
+    "players",
+    getAllNBAPlayers,
+    {
+      select: (rawPlayersData) =>
+        rawPlayersData.map((player) => {
+          return {
+            value: player,
+            label: player,
+          };
+        }),
+    }
+  );
 
-      //** */ Set State so player names are listed in combobox
-      setNbaPlayer({
-        ...nbaPlayer,
-        allPlayers: formattedListOfPlayersForSelect,
-      });
-      setRetrievedAllPlayers(true);
-      setisLoading(false);
-    };
+  const showPlayerData = async () => {
+    const [playerInfo, lastTenGamesInfo] = await getSelectedPlayerInfo(
+      nbaPlayer.selectedOption.value
+    );
+    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo", playerInfo);
+    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Last TEN ", lastTenGamesInfo);
 
-    !retrievedAllPlayers ? getData() : "";
+    setplayerInfo({ ...playerInfo });
+    setlastTenGamesInfo(lastTenGamesInfo);
+  };
 
-    const showPlayerData = async () => {
-      setisLoading(true);
-      const [playerInfo, lastTenGamesInfo] = await getSelectedPlayerInfo(
-        nbaPlayer.selectedOption.value
-      );
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo", playerInfo);
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Last TEN ", lastTenGamesInfo);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const playerNames = await getAllNBAPlayers();
 
-      setplayerInfo({ ...playerInfo });
-      setlastTenGamesInfo(lastTenGamesInfo);
-      // setisLoading(false);
-    };
+  //     //** Format player names to be used in combobox component
+  //     const formattedListOfPlayersForSelect = playerNames.map((player) => {
+  //       return {
+  //         value: player,
+  //         label: player,
+  //       };
+  //     });
 
-    nbaPlayer.selectedOption.value !== "-" ? showPlayerData() : "";
-  }, [resubmitDisplay]);
+  //     //** */ Set State so player names are listed in combobox
+  //     setNbaPlayer({
+  //       ...nbaPlayer,
+  //       selectablePlayers: formattedListOfPlayersForSelect,
+  //     });
+  //     setRetrievedAllPlayers(true);
+  //   };
+
+  //   !retrievedAllPlayers ? getData() : "";
+
+  //   const showPlayerData = async () => {
+  //     const [playerInfo, lastTenGamesInfo] = await getSelectedPlayerInfo(
+  //       nbaPlayer.selectedOption.value
+  //     );
+  //     console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ PlaeyerInfo", playerInfo);
+  //     console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Last TEN ", lastTenGamesInfo);
+
+  //     setplayerInfo({ ...playerInfo });
+  //     setlastTenGamesInfo(lastTenGamesInfo);
+  //   };
+
+  //   nbaPlayer.selectedOption.value !== "-" ? showPlayerData() : "";
+  // }, [resubmitDisplay]);
 
   const handleComboBoxChange = (selectedOption) => {
     const userOptionSelect = {
@@ -79,9 +99,17 @@ export default function Home() {
     });
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
+  }
+
   return (
     <>
-      <Box height={"100vh"} >
+      <Box height={"100vh"}>
         <Flex
           direction={"column"}
           // TODO Look up why this resolves probelm with contenet smushing when resizing to smaller screen
@@ -92,7 +120,7 @@ export default function Home() {
         >
           {/* Might Combine Submit button and select box into one component */}
           <ComboBox
-            listOfOptions={nbaPlayer.allPlayers}
+            listOfOptions={data}
             handleChange={handleComboBoxChange}
             nbaPlayer={nbaPlayer}
             setNbaPlayer={setNbaPlayer}
@@ -104,7 +132,6 @@ export default function Home() {
             setResubmit={setResubmitDisplay}
           />
 
-          
           {JSON.stringify(playerInfo) === "{}" ? (
             ""
           ) : (
