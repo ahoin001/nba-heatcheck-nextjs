@@ -38,7 +38,7 @@ export const LineGraph = ({ LastTenGames }) => {
 
         <Heading> LAST TEN GAMES VISUAL</Heading>
 
-        <ComboBox
+        {/* <ComboBox
           listOfOptions={options}
           value={selectedOptionOne}
           isSearchable={false}
@@ -58,7 +58,7 @@ export const LineGraph = ({ LastTenGames }) => {
             setSelectedOptionTwo(userSelectedOption)
           }
           placeholderText="Compare a stat!"
-        />
+        /> */}
 
         {/* <Box></Box> */}
         <ResponsiveContainer width="90%" height={400}>
@@ -94,8 +94,6 @@ export const LineGraph = ({ LastTenGames }) => {
             " "
           )}
         </ResponsiveContainer>
-
-        <div className="divider"> </div>
       </VStack>
     </>
   );

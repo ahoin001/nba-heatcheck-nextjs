@@ -2,9 +2,9 @@ import { Box } from "@chakra-ui/react";
 import { StatboxAverages } from "./StatboxAverages";
 
 export const BoxScore = ({ playerAvgs }) => {
-  if (!playerAvgs) {
-    return <div></div>;
-  } else {
+  if (JSON.stringify(playerAvgs) === "{}") {
+    return "";
+  }else {
     return (
       <Box border={"2px"}>
         <StatboxAverages

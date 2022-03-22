@@ -2,8 +2,9 @@ import { Skeleton, Box, Heading, VStack } from "@chakra-ui/react";
 
 export const PlayerInfo = ({ playerInfo }) => {
   if (JSON.stringify(playerInfo) === "{}") {
-    return <Skeleton height={"500px"} />;
+    return "";
   } else {
+    console.log("PLAYER INFO PARMA: ", playerInfo);
     return (
       <>
         <Box>

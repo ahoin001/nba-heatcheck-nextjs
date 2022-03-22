@@ -1,13 +1,8 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
-export const SubmitButton = ({ resubmitDisplay, setResubmit }) => {
+export const SubmitButton = ({ onSubmit }) => {
   return (
-    <Button
-    p={10}
-      onClick={() => {
-        setResubmit(!resubmitDisplay);
-      }}
-    >
+    <Button p={10} onClick={() => onSubmit()}>
       Find Player!
     </Button>
   );
