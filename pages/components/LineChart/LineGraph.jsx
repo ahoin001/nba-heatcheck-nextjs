@@ -17,6 +17,12 @@ import {
 } from "recharts";
 
 export const LineGraph = ({ LastTenGames }) => {
+  if (JSON.stringify(LastTenGames) === "{}") {
+    return "";
+  }
+
+  console.log("-------------------------------------");
+  console.log(LastTenGames);
   const [selectedOptionOne, setSelectedOptionOne] = useState({
     value: "PPG",
     label: "Points",
@@ -26,19 +32,14 @@ export const LineGraph = ({ LastTenGames }) => {
     label: "Rebounds",
   });
 
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-  console.log(selectedOptionOne);
-  console.log(selectedOptionOne.label);
-  console.log(selectedOptionTwo);
-  console.log(selectedOptionTwo.label);
   return (
     <>
-      <VStack w={"container.md"}>
+      <VStack>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
 
         <Heading> LAST TEN GAMES VISUAL</Heading>
 
-        {/* <ComboBox
+        <ComboBox
           listOfOptions={options}
           value={selectedOptionOne}
           isSearchable={false}
@@ -58,7 +59,7 @@ export const LineGraph = ({ LastTenGames }) => {
             setSelectedOptionTwo(userSelectedOption)
           }
           placeholderText="Compare a stat!"
-        /> */}
+        />
 
         {/* <Box></Box> */}
         <ResponsiveContainer width="90%" height={400}>

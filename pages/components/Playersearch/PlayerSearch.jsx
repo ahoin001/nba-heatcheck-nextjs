@@ -9,7 +9,7 @@ import { SubmitButton } from "../UIComponents/Button";
 import { getAllNBAPlayers } from "../../util/NBAApi";
 import { getSelectedPlayerInfo } from "../../util/UtilityFun";
 import { PlayerInfo } from "../PlayerInfo/PlayerInfo";
-import {LineGraph} from '../LineChart/LineGraph'
+import { LineGraph } from "../LineChart/LineGraph";
 
 export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
   // Query to get all plaeyers for select box
@@ -95,7 +95,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
         <>
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
-          {/* <LineGraph LastTenGames={nbaPlayer.playerInfo} /> */}
+          <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
         </>
       )}
     </Box>

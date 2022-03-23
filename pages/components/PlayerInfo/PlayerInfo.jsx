@@ -24,7 +24,7 @@ export const PlayerInfo = ({ playerInfo }) => {
               Jersey #: {playerInfo.currentPlayer.leagues.standard.jersey}{" "}
             </Heading>
 
-            <div className="divider"> </div>
+            {/* <div className="divider"> </div> */}
           </VStack>
         </Box>
       </>
