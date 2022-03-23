@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import theme from './theme'
 
 import "../styles/globals.css";
 
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} />
       </ChakraProvider>
