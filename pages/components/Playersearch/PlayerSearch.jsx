@@ -72,10 +72,6 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
     return <div>{error}</div>;
   }
 
-  console.log("THE STATE", nbaPlayer);
-  console.log("THE STATE", nbaPlayer.playerInfo);
-  console.log("THE STATE", nbaPlayer.lastTenGamesInfo);
-
   return (
     <Box>
       <VStack>
@@ -86,16 +82,17 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           nbaPlayer={nbaPlayer}
           placeholderText="Select a player..."
         />
-        <SubmitButton onSubmit={refetch} />
+        <SubmitButton onSubmit={refetch} isLoading={isFetching} />
       </VStack>
 
       {isFetching ? (
-        <Spinner color="red.500" />
+        <Center p={20}>
+          <Spinner color="red.500" size={"xl"} />
+        </Center>
       ) : (
         <>
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
-          <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
         </>
       )}
