@@ -4,9 +4,12 @@ import { StatboxAverages } from "./StatboxAverages";
 export const BoxScore = ({ playerAvgs }) => {
   if (JSON.stringify(playerAvgs) === "{}") {
     return "";
-  }else {
+  } else {
     return (
-      <Box border={"2px"}>
+      <Box
+        //  border={"2px"}
+        my={20}
+      >
         <StatboxAverages
           //   boxSize={this.props.boxSize}
           playerPPG={playerAvgs.playerPPG}

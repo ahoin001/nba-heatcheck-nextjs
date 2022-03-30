@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useColorMode } from "@chakra-ui/color-mode";
-import theme from "./theme";
+import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 
 import Head from "next/head";
 import { Box, Flex } from "@chakra-ui/react";
@@ -17,10 +16,15 @@ export default function Home() {
   });
 
   const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "#1a202c");
 
   return (
     <>
-      <Box height={"100vh"} bg="">
+      <Head>
+        <title>NBA Stat Tracker</title>
+        <meta name="description" content="Deep player stats with visual data" />
+      </Head>
+      <Box height={"100vh"} p={6} mb={"10"} bg={bg}>
         <IconButton mt={4} aria-label="Toggle Mode" onClick={toggleColorMode}>
           {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         </IconButton>
@@ -30,6 +34,7 @@ export default function Home() {
           wrap={"wrap"}
           justify={"center"}
           align={"center"}
+          
         >
           <PlayerSearch nbaPlayer={nbaPlayer} setNbaPlayer={setNbaPlayer} />
         </Flex>

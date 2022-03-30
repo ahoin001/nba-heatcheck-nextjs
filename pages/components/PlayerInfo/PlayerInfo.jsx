@@ -7,7 +7,7 @@ export const PlayerInfo = ({ playerInfo }) => {
     console.log("PLAYER INFO PARMA: ", playerInfo);
     return (
       <>
-        <Box>
+        <Box my={12}>
           <VStack spacing={8} align={"center"} justify={"center"}>
             <Heading size="3xl" fontWeight={"medium"}>
               {" "}

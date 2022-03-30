@@ -1,13 +1,14 @@
 import { useQuery } from "react-query";
-import { Box, Center, Flex, Spinner, VStack } from "@chakra-ui/react";
+import { Box, Center, Divider, Spinner, VStack } from "@chakra-ui/react";
 
-// import { LineGraph } from "../LineChart/LineGraph";
-import { BoxScore } from "../statbox/BoxScore";
-import { ComboBox } from "../UIComponents/ComboBoxSelect";
+
 import { SubmitButton } from "../UIComponents/Button";
+import { ComboBox } from "../UIComponents/ComboBoxSelect";
 
+import { BoxScore } from "../statbox/BoxScore";
 import { PlayerInfo } from "../PlayerInfo/PlayerInfo";
 import { LineGraph } from "../LineChart/LineGraph";
+
 import { getAllNBAPlayers } from "../../util/NBAApi";
 import { getSelectedPlayerInfo } from "../../util/UtilityFun";
 
@@ -74,7 +75,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
 
   return (
     <Box>
-      <VStack>
+      <VStack p={4}>
         {" "}
         <ComboBox
           listOfOptions={playerNames}
@@ -92,7 +93,9 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
       ) : (
         <>
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
+          <Divider />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
+          <Divider />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
         </>
       )}

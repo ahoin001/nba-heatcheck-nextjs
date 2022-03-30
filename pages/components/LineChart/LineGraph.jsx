@@ -34,10 +34,10 @@ export const LineGraph = ({ LastTenGames }) => {
 
   return (
     <>
-      <VStack>
+      <VStack p={4} my={12}>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
 
-        <Heading> LAST TEN GAMES VISUAL</Heading>
+        <Heading> LAST TEN GAMES </Heading>
 
         <ComboBox
           listOfOptions={options}
@@ -62,7 +62,7 @@ export const LineGraph = ({ LastTenGames }) => {
         />
 
         {/* <Box></Box> */}
-        <ResponsiveContainer width="90%" height={400}>
+        <ResponsiveContainer width="100%" height={400}>
           {JSON.stringify(LastTenGames) !== "{}" ? (
             <LineChart
               data={statToShow(LastTenGames)}

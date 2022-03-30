@@ -3,8 +3,9 @@ import { Box } from "@chakra-ui/react";
 
 export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
   return (
-    <Box px={[6, 8]} py={[4]} w={["80%", "80%", "4xl"]}>
+    <Box px={[6, 8]} py={[8]} w={["80%", "80%", "4xl"]}>
       <Select
+        size="lg"
         instanceId={"postType"}
         name="players"
         onChange={handleChange}
