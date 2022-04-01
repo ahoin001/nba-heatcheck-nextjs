@@ -6,7 +6,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/button";
 
-import { PlayerSearch } from "./components/Playersearch/PlayerSearch";
+import { PlayerSearch } from "../components/Playersearch/PlayerSearch";
 
 export default function Home() {
   const [nbaPlayer, setNbaPlayer] = useState({
