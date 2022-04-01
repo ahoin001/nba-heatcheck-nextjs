@@ -1,4 +1,4 @@
-import { Skeleton, Box, Heading, VStack } from "@chakra-ui/react";
+import { Divider, Box, Heading, VStack } from "@chakra-ui/react";
 
 export const PlayerInfo = ({ playerInfo }) => {
   if (JSON.stringify(playerInfo) === "{}") {
@@ -23,8 +23,7 @@ export const PlayerInfo = ({ playerInfo }) => {
               {" "}
               Jersey #: {playerInfo.currentPlayer.leagues.standard.jersey}{" "}
             </Heading>
-
-            {/* <div className="divider"> </div> */}
+            <Divider />
           </VStack>
         </Box>
       </>

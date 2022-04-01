@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import { Box, Center, Divider, Spinner, VStack } from "@chakra-ui/react";
 
-
 import { SubmitButton } from "../UIComponents/Button";
 import { ComboBox } from "../UIComponents/ComboBoxSelect";
 
@@ -11,6 +10,7 @@ import { LineGraph } from "../LineChart/LineGraph";
 
 import { getAllNBAPlayers } from "../../util/NBAApi";
 import { getSelectedPlayerInfo } from "../../util/UtilityFun";
+import { LastTenGames } from "../LastTenGames/LastTenGames";
 
 export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
   // Query to get all plaeyers for select box
@@ -93,10 +93,9 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
       ) : (
         <>
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
-          <Divider />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
-          <Divider />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
+          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />
         </>
       )}
     </Box>

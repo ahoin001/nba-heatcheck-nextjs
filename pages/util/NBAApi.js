@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://api-nba-v1.p.rapidapi.com";
+const baseUrl = process.env.NBA_API_BASE_URL;
 
 export async function getPlayerByName(playerFirstName, playerLastName) {
   return axios({
@@ -80,7 +80,6 @@ export async function getPlayerTeam(teamID) {
   })
     .then((response) => {
       // console.log('TEAM (FROM API FILE): ', response.data.api.teams[0].fullName)
-
       return response.data.api.teams[0].fullName;
     })
     .catch((error) => {

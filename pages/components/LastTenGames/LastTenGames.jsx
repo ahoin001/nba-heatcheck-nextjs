@@ -1,5 +1,6 @@
 import {
   Skeleton,
+  VStack,
   Table,
   Thead,
   Tbody,
@@ -13,11 +14,14 @@ export const LastTenGames = ({ LastTenGames }) => {
   const [isLessThan800] = useMediaQuery("(max-width: 800px)");
 
   //? If the props aren't loaded yet, display loading component
-  if (!LastTenGames) {
+  if (JSON.stringify(LastTenGames) === "{}") {
     return <Skeleton></Skeleton>;
   } else {
+    console.log("FROM LASTTENGAMES ****: ", LastTenGames);
+    console.log("===========");
+    console.log("FROM LASTTENGAMES ****: ", LastTenGames.games);
     // ** Change how much informatino displayed judged by screen size
-    const statRows = LastTenGames.map((game, index) => {
+    const statRows = LastTenGames.games.map((game, index) => {
       if (isLessThan800) {
         if (index % 2 !== 0) {
           return (
@@ -228,7 +232,7 @@ export const LastTenGames = ({ LastTenGames }) => {
     const tableColumns = tableColumnsCompute();
 
     return (
-      <>
+      <VStack p={12} align={"center"} justify={"center"}>
         <h1> Last Ten Games </h1>
 
         <Table
@@ -240,7 +244,7 @@ export const LastTenGames = ({ LastTenGames }) => {
           <Thead>{tableColumns}</Thead>
           <Tbody>{statRows}</Tbody>
         </Table>
-      </>
+      </VStack>
     );
   }
 };
