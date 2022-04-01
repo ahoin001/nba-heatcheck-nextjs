@@ -17,10 +17,6 @@ import {
 } from "recharts";
 
 export const LineGraph = ({ LastTenGames }) => {
-  if (JSON.stringify(LastTenGames) === "{}") {
-    return "";
-  }
-
   console.log("-------------------------------------");
   console.log(LastTenGames);
   const [selectedOptionOne, setSelectedOptionOne] = useState({
@@ -32,6 +28,9 @@ export const LineGraph = ({ LastTenGames }) => {
     label: "Rebounds",
   });
 
+  if (JSON.stringify(LastTenGames) === "{}") {
+    return "";
+  }
   return (
     <>
       <VStack p={4} my={12}>
