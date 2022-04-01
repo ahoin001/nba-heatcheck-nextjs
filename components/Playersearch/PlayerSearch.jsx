@@ -78,6 +78,10 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
       <VStack p={4}>
         {" "}
         <ComboBox
+          value={{
+            value: "",
+            label: "",
+          }}
           listOfOptions={playerNames}
           handleChange={handleComboBoxChange}
           nbaPlayer={nbaPlayer}
@@ -95,7 +99,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
-          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />
+          {/* <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} /> */}
         </>
       )}
     </Box>

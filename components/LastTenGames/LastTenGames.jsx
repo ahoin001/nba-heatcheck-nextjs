@@ -8,6 +8,7 @@ import {
   Th,
   Td,
   useMediaQuery,
+  Heading,
 } from "@chakra-ui/react";
 
 export const LastTenGames = ({ LastTenGames }) => {
@@ -233,7 +234,7 @@ export const LastTenGames = ({ LastTenGames }) => {
 
     return (
       <VStack p={12} align={"center"} justify={"center"}>
-        <h1> Last Ten Games </h1>
+        <Heading mb={6}> Last Ten Games </Heading>
 
         <Table
           sx={{ overflowX: "scroll" }}

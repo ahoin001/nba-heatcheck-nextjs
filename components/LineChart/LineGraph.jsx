@@ -36,7 +36,7 @@ export const LineGraph = ({ LastTenGames }) => {
       <VStack p={4} my={12}>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
 
-        <Heading> LAST TEN GAMES </Heading>
+        <Heading> Stat Graphic </Heading>
 
         <ComboBox
           listOfOptions={options}
