@@ -233,7 +233,7 @@ export const LastTenGames = ({ LastTenGames }) => {
     const tableColumns = tableColumnsCompute();
 
     return (
-      <VStack p={12} align={"center"} justify={"center"} wrap={"wrap"}>
+      <VStack p={6} align={"center"} justify={"center"} wrap={"wrap"}>
         <Heading mb={6}> Last Ten Games </Heading>
 
         <Table
