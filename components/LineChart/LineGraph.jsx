@@ -61,7 +61,7 @@ export const LineGraph = ({ LastTenGames }) => {
         />
 
         {/* <Box></Box> */}
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="95%" height={400}>
           {JSON.stringify(LastTenGames) !== "{}" ? (
             <LineChart
               data={statToShow(LastTenGames)}

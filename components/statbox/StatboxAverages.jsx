@@ -21,7 +21,7 @@ export const StatboxAverages = ({
     width={["400px","500px","700px","900px"]} 
     mx="auto">
       <Heading
-        fontSize={["2xl", "3xl", "4xl", "6xl"]}
+        fontSize={["2xl", "3xl", "4xl", "5xl"]}
         p={[6, 10, 12]}
         textAlign={"center"}
       >
@@ -31,7 +31,7 @@ export const StatboxAverages = ({
       <Flex
         // bg={"blue"}
         justify={"center"}
-        width={["400px","500px","700px"]}
+        width={["200px","400px","700px","1000px"]}
         wrap={"wrap"}
         px={[3, 6, 9]}
         mb={9}
