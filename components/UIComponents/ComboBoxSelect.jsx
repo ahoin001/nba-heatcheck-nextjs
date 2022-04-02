@@ -8,7 +8,7 @@ export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
     <Box
       // px={[6, 8]}
       py={[8]}
-      w={["sm","md", "md", "2xl"]}
+      w={["xs","md", "md", "2xl"]}
     >
       <Select
         size="lg"
