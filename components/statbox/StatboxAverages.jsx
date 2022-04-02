@@ -31,7 +31,7 @@ export const StatboxAverages = ({
       <Flex
         // bg={"blue"}
         justify={"center"}
-        width={["200px","400px","700px","1000px"]}
+        width={["400px","550px","700px","1000px"]}
         wrap={"wrap"}
         px={[3, 6, 9]}
         mb={9}

@@ -25,7 +25,7 @@ export default function Home() {
         <meta name="description" content="Deep player stats with visual data" />
       </Head>
       <Box p={6} mb={"10"} bg={bg} width="full">
-        <IconButton pos="fixed"  zIndex={2} mt={2} aria-label="Toggle Mode" onClick={toggleColorMode}>
+        <IconButton pos="fixed"  zIndex={2} mt={340} aria-label="Toggle Mode" onClick={toggleColorMode}>
           {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         </IconButton>
         <Flex
