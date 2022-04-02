@@ -75,7 +75,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
 
   return (
     <Box>
-      <VStack p={4}>
+      <VStack p={4} width="100%">
         {" "}
         <ComboBox
           value={{

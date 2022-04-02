@@ -1,5 +1,5 @@
 import { Statbox } from "./Statbox";
-import { Heading, HStack, Box } from "@chakra-ui/react";
+import { Heading, HStack, Box, Flex, Center, VStack } from "@chakra-ui/react";
 
 export const StatboxAverages = ({
   playerPPG,
@@ -16,12 +16,26 @@ export const StatboxAverages = ({
   FTPercent,
 }) => {
   return (
-    <Box>
-      <Heading size={"3xl"} p={[6, 10, 12]} textAlign={"center"}>
+    <VStack 
+    // bg={"yellow"}  
+    width={["400px","500px","700px","900px"]} 
+    mx="auto">
+      <Heading
+        fontSize={["2xl", "3xl", "4xl", "6xl"]}
+        p={[6, 10, 12]}
+        textAlign={"center"}
+      >
         CURRENT SEASON AVERAGES
       </Heading>
 
-      <HStack justify={"center"} wrap={"wrap"} px={[3, 6, 9]} mb={9}>
+      <Flex
+        // bg={"blue"}
+        justify={"center"}
+        width={["400px","500px","700px"]}
+        wrap={"wrap"}
+        px={[3, 6, 9]}
+        mb={9}
+      >
         <Statbox Stat={"PPG"} Average={playerPPG} />
         <Statbox Stat={"RPG"} Average={playerRPG} />
         <Statbox Stat={"APG"} Average={playerAPG} />
@@ -34,7 +48,7 @@ export const StatboxAverages = ({
         <Statbox Stat={"FTA"} Average={playerFTAPG} />
         <Statbox Stat={"FM"} Average={playerFTAMPG} />
         <Statbox Stat={"FT%"} Average={FTPercent} />
-      </HStack>
-    </Box>
+      </Flex>
+    </VStack>
   );
 };

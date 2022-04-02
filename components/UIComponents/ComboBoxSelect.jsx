@@ -1,9 +1,15 @@
 import { Select } from "chakra-react-select";
-import { Box } from "@chakra-ui/react";
+import { Box, useMediaQuery } from "@chakra-ui/react";
 
 export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
+  // const [isLessThan600] = useMediaQuery("(max-width: 600px)");
+
   return (
-    <Box px={[6, 8]} py={[8]} w={"4xl"}>
+    <Box
+      // px={[6, 8]}
+      py={[8]}
+      w={["md", "md", "2xl"]}
+    >
       <Select
         size="lg"
         instanceId={"postType"}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 
 import Head from "next/head";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/button";
 
@@ -24,17 +24,17 @@ export default function Home() {
         <title>NBA Stat Tracker</title>
         <meta name="description" content="Deep player stats with visual data" />
       </Head>
-      <Box height={"100vh"} p={6} mb={"10"} bg={bg}>
+      <Box p={6} mb={"10"} bg={bg} width="full">
         <IconButton mt={4} aria-label="Toggle Mode" onClick={toggleColorMode}>
           {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
         </IconButton>
         <Flex
+          // width={"100%"}
           direction={"column"}
           // TODO Look up why this resolves probelm with contenet smushing when resizing to smaller screen
           wrap={"wrap"}
           justify={"center"}
           align={"center"}
-          
         >
           <PlayerSearch nbaPlayer={nbaPlayer} setNbaPlayer={setNbaPlayer} />
         </Flex>
