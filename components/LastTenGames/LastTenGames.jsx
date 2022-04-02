@@ -76,16 +76,16 @@ export const LastTenGames = ({ LastTenGames }) => {
               <Td textAlign={"center"}>{game.fga}</Td>
               <Td textAlign={"center"}>{game.fgp}</Td>
               <Td textAlign={"center"}>{game.ftm}</Td>
-              <Td textAlign={"center"}>{game.fta}</Td>
+              {/* <Td textAlign={"center"}>{game.fta}</Td>
               <Td textAlign={"center"}>{game.ftp}</Td>
               <Td textAlign={"center"}>{game.offReb}</Td>
-              <Td textAlign={"center"}>{game.defReb}</Td>
+              <Td textAlign={"center"}>{game.defReb}</Td> */}
               <Td textAlign={"center"}>{game.totReb}</Td>
               <Td textAlign={"center"}>{game.assists}</Td>
               <Td textAlign={"center"}>{game.steals}</Td>
               <Td textAlign={"center"}>{game.blocks}</Td>
-              <Td textAlign={"center"}>{game.turnovers}</Td>
-              <Td textAlign={"center"}>{game.pFouls}</Td>
+              {/* <Td textAlign={"center"}>{game.turnovers}</Td>
+              <Td textAlign={"center"}>{game.pFouls}</Td> */}
               <Td textAlign={"center"}>{game.points}</Td>
             </Tr>
           );
@@ -107,7 +107,7 @@ export const LastTenGames = ({ LastTenGames }) => {
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.ftm}
             </Td>
-            <Td textAlign={"center"} fontWeight={"bold"}>
+            {/* <Td textAlign={"center"} fontWeight={"bold"}>
               {game.fta}
             </Td>
             <Td textAlign={"center"} fontWeight={"bold"}>
@@ -118,7 +118,7 @@ export const LastTenGames = ({ LastTenGames }) => {
             </Td>
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.defReb}
-            </Td>
+            </Td> */}
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.totReb}
             </Td>
@@ -131,12 +131,12 @@ export const LastTenGames = ({ LastTenGames }) => {
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.blocks}
             </Td>
-            <Td textAlign={"center"} fontWeight={"bold"}>
+            {/* <Td textAlign={"center"} fontWeight={"bold"}>
               {game.turnovers}
             </Td>
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.pFouls}
-            </Td>
+            </Td> */}
             <Td textAlign={"center"} fontWeight={"bold"}>
               {game.points}
             </Td>
@@ -192,7 +192,7 @@ export const LastTenGames = ({ LastTenGames }) => {
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               FTM
             </Th>
-            <Th fontSize={"lg"} fontWeight={"extrabold"}>
+            {/* <Th fontSize={"lg"} fontWeight={"extrabold"}>
               FTA
             </Th>
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
@@ -203,7 +203,7 @@ export const LastTenGames = ({ LastTenGames }) => {
             </Th>
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               DREB
-            </Th>
+            </Th> */}
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               REB
             </Th>
@@ -216,12 +216,12 @@ export const LastTenGames = ({ LastTenGames }) => {
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               BLK
             </Th>
-            <Th fontSize={"lg"} fontWeight={"extrabold"}>
+            {/* <Th fontSize={"lg"} fontWeight={"extrabold"}>
               TO
             </Th>
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               PF
-            </Th>
+            </Th> */}
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               PTS
             </Th>
@@ -233,12 +233,12 @@ export const LastTenGames = ({ LastTenGames }) => {
     const tableColumns = tableColumnsCompute();
 
     return (
-      <VStack p={12} align={"center"} justify={"center"}>
+      <VStack p={12} align={"center"} justify={"center"} wrap={"wrap"}>
         <Heading mb={6}> Last Ten Games </Heading>
 
         <Table
-          sx={{ overflowX: "scroll" }}
-          maxW={["20px"]}
+          // sx={{ overflowX: "scroll" }}
+          // maxW={["20px"]}
           variant="striped"
           colorScheme="gray"
         >

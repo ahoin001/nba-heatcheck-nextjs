@@ -99,7 +99,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
-          {/* <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} /> */}
+          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />
         </>
       )}
     </Box>
