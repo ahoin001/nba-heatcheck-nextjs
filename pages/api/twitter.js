@@ -9,27 +9,24 @@ var T = new Twit({
   strictSSL: true, // optional - requires SSL certificates to be valid.
 });
 
-export default T.get(
-  "search/tweets",
-  { q: "lebron  since:2021-04-9", count: 5 },
-  function (err, data, res) {
-    // console.log(data);
-    data.statuses.map((tweet) => {
-      if ((tweet.lang = "en")) {
-        // return text of the tweet
-        console.log(tweet.text);
-        console.log("--------------");
-      }
+export default async function (req, res) {
+  try {
+    const apiResponse = await T.get("search/tweets", {
+      q: "lebron  since:2021-04-9",
+      count: 5,
     });
 
+    console.log("@@@@@@@@@@@@");
+    console.log(apiResponse.statuses);
+ 
+    // res.end(JSON.stringify(apiResponse));
+    res.status(200).json({ apiResponse })
     
-    // console.log(data.statuses[0].text);
-    // res.status(200).json({ name: "John Doe", stuff: data });
+    // return res
+    //   .status(200)
+    //   .json({ status: "ok", Alex: data.statuses, name: "John Doe" });
+
+  } catch (error) {
+    console.log(error);
   }
-);
-
-// stream = T.stream('statuses/filter', { track: 'mango' })
-
-// stream.on('tweet', function (tweet) {
-//   console.log(tweet)
-// })
+}
