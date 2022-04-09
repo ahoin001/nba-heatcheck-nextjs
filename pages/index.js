@@ -5,7 +5,8 @@ import Head from "next/head";
 import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/button";
-
+import { Toggle } from "../components/UIComponents/Toggle/Toggle";
+import { Tweet } from "../components/UIComponents/Tweet/Tweet";
 import { PlayerSearch } from "../components/Playersearch/PlayerSearch";
 
 export default function Home() {
@@ -41,6 +42,8 @@ export default function Home() {
           justify={"center"}
           align={"center"}
         >
+          {/* <Toggle /> */}
+          <Tweet />
           <PlayerSearch nbaPlayer={nbaPlayer} setNbaPlayer={setNbaPlayer} />
         </Flex>
       </Box>

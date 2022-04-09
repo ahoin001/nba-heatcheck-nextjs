@@ -14,3 +14,192 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.pop {
+  color: yellow;
+}
+
+/********************************************************
+Styling for Component Toggle
+*********************************************************/
+
+.switchButton {
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 30px;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #155fff;
+  position: relative;
+  padding-right: 120px;
+  position: relative;
+}
+.switchButton:before {
+  content: "Video";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+}
+.switchButton-checkbox {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+.switchButton-checkbox:checked + .switchButton-label:before {
+  transform: translateX(120px);
+  transition: transform 300ms linear;
+}
+.switchButton-checkbox + .switchButton-label {
+  position: relative;
+  padding: 15px 0;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+.switchButton-checkbox + .switchButton-label:before {
+  content: "";
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  transform: translateX(0);
+  transition: transform 300ms;
+}
+.switchButton-checkbox + .switchButton-label .switchButton-label-span {
+  position: relative;
+}
+
+/********************************************************
+Styling for Tweet
+*********************************************************/
+
+.pageCOntainer {
+  display: flex;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+
+  @media (min-width: 640px) {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.box {
+  position: relative;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+
+  @media (min-width: 640px) {
+    max-width: 36rem;
+  }
+}
+
+.tweetContainer {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-color: #d1d5db;
+}
+
+.tweetContainer-header {
+  display: flex;
+  align-items: center;
+}
+
+.tweetContainer-header-imageLink {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+}
+
+.tweetContainer-header-nameLink {
+  display: flex;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetContainer-header-name {
+  display: flex;
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.tweetContainer-header-name {
+  display: flex;
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.tweetContainer-header-handle {
+  color: #6b7280;
+}
+
+.tweetContainer-header-handle-logo {
+  margin-left: auto;
+}
+
+.tweetContainer-tweet-text {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: #374151;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.tweetContainer-tweet-timestamp {
+  color: #6B7280; 
+  font-size: 0.875rem;
+  line-height: 1.25rem; 
+  
+  /*TODO Add hover underline  */
+}
+
+#twittersvg {
+  display: inline;
+  margin-left: 0.25rem;
+  color: #3b82f6;
+  width: 1rem;
+  height: 1rem;
+}
+
+#tweet-img {
+  border-radius: 9999px;
+}

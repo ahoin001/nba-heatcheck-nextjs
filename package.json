@@ -20,10 +20,13 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-query": "^3.34.16",
-    "recharts": "^2.1.9"
+    "recharts": "^2.1.9",
+    "twit": "^2.2.11",
+    "twitter-lite": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0"
+    "eslint-config-next": "12.1.0",
+    "sass": "^1.50.0"
   }
 }
