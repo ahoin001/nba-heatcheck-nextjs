@@ -45,7 +45,7 @@ export default function Home() {
         >
           {/* <Toggle /> */}
           <Timeline/>
-          <Tweet />
+          {/* <Tweet /> */}
           <PlayerSearch nbaPlayer={nbaPlayer} setNbaPlayer={setNbaPlayer} />
         </Flex>
       </Box>

@@ -109,8 +109,8 @@ Styling for Tweet
 
 .box {
   position: relative;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  /* padding-top: 0.75rem;
+  padding-bottom: 0.75rem; */
 
   @media (min-width: 640px) {
     max-width: 36rem;
@@ -118,7 +118,7 @@ Styling for Tweet
 }
 
 .tweetContainer {
-  width: 100%;
+  max-width: 70%;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 1.5rem;

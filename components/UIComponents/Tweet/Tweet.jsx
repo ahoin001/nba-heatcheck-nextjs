@@ -1,24 +1,26 @@
 import React from "react";
 
-export const Tweet = () => {
+// TODO Need to remove extra fluff in timestamp
+
+export const Tweet = ({ name, handle, tweetText, timestamp,profilePic }) => {
   return (
     <div className="box">
       <div className="tweetContainer">
         <div className="tweetContainer-header">
           <a
             className="tweetContainer-header-imageLink"
-            href="https://twitter.com/naval" //MUST CHANGE AFTER
+            // href="https://twitter.com/naval" //MUST CHANGE AFTER
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               alt=""
-              src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_400x400.jpg"
-              id="rounded-full"
+              src={profilePic}
+              id="tweet-img"
             />
           </a>
           <a
-            href="https://twitter.com/naval"
+            // href="https://twitter.com/naval"
             // className="author"
             target="_blank"
             rel="noopener noreferrer"
@@ -26,9 +28,9 @@ export const Tweet = () => {
           >
             <span
               className="flex items-center font-bold text-gray-900 leading-5"
-              title="{author.name}"
+              title={name}
             >
-              Naval
+              {name}
               {/* <svg
                 aria-label="Verified Account"
                 className="ml-1 text-blue-500 inline h-4 w-4"
@@ -41,12 +43,12 @@ export const Tweet = () => {
             </span>
             <span className="tweetContainer-header-handle " title="{`@naval`}">
               {" "}
-              @naval{" "}
+              {handle}{" "}
             </span>
           </a>
           <a
             className="tweetContainer-header-handle-logo "
-            href="https://twitter.com/naval"
+            // href="https://twitter.com/naval"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -63,18 +65,15 @@ export const Tweet = () => {
             </svg>
           </a>
         </div>
-        <div className="tweetContainer-tweet-text">
-          Learn to sell. Learn to build. If you can do both, you will be
-          unstoppable.
-        </div>
+        <div className="tweetContainer-tweet-text">{tweetText}</div>
         <a
           className="tweetContainer-tweet-timestamp"
-          href="https://twitter.com/naval/status/1002104154737684480"
+        //   href="https://twitter.com/naval/status/1002104154737684480"
           target="_blank"
           rel="noopener noreferrer"
         >
           {" "}
-          3:27 AM - May 31, 2018{" "}
+          {timestamp} {" "}
         </a>
 
         {/* ? I may or may not use this section of the tweets */}
