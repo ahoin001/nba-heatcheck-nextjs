@@ -19,8 +19,7 @@ export const Tweets = ({ fetchedTweets }) => {
   }
 
   return (
-    //   <Center></Center>
-    <HStack
+      <Center> <HStack
         // maxW={{ base: "3xs", md: "70%" }}
       w={{ base: '500px', md: '1000px',}}
       justify={"space-around"}
@@ -31,6 +30,7 @@ export const Tweets = ({ fetchedTweets }) => {
       backdropBlur="8px"
     >
       {tweetsForTimeLine ? tweetsForTimeLine : ""}
-    </HStack>
+    </HStack></Center>
+   
   );
 };
