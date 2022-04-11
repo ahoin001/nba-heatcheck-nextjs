@@ -2,7 +2,7 @@ import React from "react";
 
 // TODO Need to remove extra fluff in timestamp
 
-export const Tweet = ({ name, handle, tweetText, timestamp,profilePic }) => {
+export const Tweet = ({ name, handle, tweetText, timestamp, profilePic }) => {
   return (
     <div className="box">
       <div className="tweetContainer">
@@ -13,11 +13,7 @@ export const Tweet = ({ name, handle, tweetText, timestamp,profilePic }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              alt=""
-              src={profilePic}
-              id="tweet-img"
-            />
+            <img alt="" src={profilePic} id="tweet-img" />
           </a>
           <a
             // href="https://twitter.com/naval"
@@ -66,14 +62,17 @@ export const Tweet = ({ name, handle, tweetText, timestamp,profilePic }) => {
           </a>
         </div>
         <div className="tweetContainer-tweet-text">{tweetText}</div>
+
+        <img src="https://pbs.twimg.com/media/FP_QDptWQAYaSAa.jpg" />
+
         <a
           className="tweetContainer-tweet-timestamp"
-        //   href="https://twitter.com/naval/status/1002104154737684480"
+          //   href="https://twitter.com/naval/status/1002104154737684480"
           target="_blank"
           rel="noopener noreferrer"
         >
           {" "}
-          {timestamp} {" "}
+          {timestamp}{" "}
         </a>
 
         {/* ? I may or may not use this section of the tweets */}

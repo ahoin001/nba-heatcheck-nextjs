@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box } from "@chakra-ui/react";
-import { Tweet } from "./Tweet";
+import { Box, Flex, Grid } from "@chakra-ui/react";
 import EmbedTweet from "./EmbedTweet";
 import axios from "axios";
 
@@ -9,12 +8,11 @@ export const Tweets = () => {
 
   const fetchTwitter = async () => {
     try {
-      const res = await axios.get("/api/twitter");
+      const res = await axios.get("/api/getTweets");
 
-      console.log("@@@@@@@@@@@@@@THE DATA: ", res.data.tweets);
+      console.log("+++++++++++++++THE DATA: ", res.data);
 
-      const recentTweetsArray = res.data.tweets;
-      setallTweets(recentTweetsArray);
+      setallTweets(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -26,32 +24,20 @@ export const Tweets = () => {
 
   const tweetsForTimeLine = allTweets.map((tweet) => {
     if (tweet.lang === "en") {
-      return (
-        <Box  w={"100%"} maxW={"2xl"}>
-          <EmbedTweet tweetId={tweet.id_str} />
-        </Box>
-      );
+      console.log("MAPPING DATA THIS IS OBJECT", tweet);
+      return <EmbedTweet key={tweet.id} tweetId={tweet.id} />;
     }
   });
 
-  return <Box width={"1200px"}>{tweetsForTimeLine}</Box>;
-  //   return <>{tweetsForTimeLine}<EmbedTweet tweetId={"1485953263040188416"} />;</>;
+  return (
+    <Flex
+      //   maxW={{ base: "3xs", md: "60%" }}
+      maxW={"80%"}
+      justify={"space-around"}
+      wrap={"wrap"}
+      bg={"gray.300"}
+    >
+      {tweetsForTimeLine}
+    </Flex>
+  );
 };
-
-//   const tweetsForTimeLine = allTweets.map((tweet) => {
-//     if (tweet.lang === "en") {
-//       return (
-//         <>
-//           <Tweet
-//             name={tweet.user.name}
-//             handle={tweet.user.screen_name}
-//             // tweetText={tweet.retweeted_status.full_text}
-//             tweetText={tweet.full_text}
-//             // tweetText={text}
-//             timestamp={tweet.created_at}
-//             profilePic={tweet.user.profile_image_url_https}
-//           />
-//         </>
-//       );
-//     }
-//   });

@@ -1,5 +1,4 @@
 var Twit = require("twit");
-import axios from "axios";
 
 var T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -13,21 +12,21 @@ var T = new Twit({
 export default async function (req, res) {
   try {
     const apiResponse = await T.get("search/tweets", {
-      q: "durant  since:2021-04-9 -RT",
-      count: 10,
-      tweet_mode:'extended'
+      q: `lebron  since:2021-04-9 -RT`,
+      exclude: "replies",
+      count: 20,
+      tweet_mode: "extended",
+    //   "media.fields":
+    //     "duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics",
     });
 
-    console.log("@@@@@@@@@@@@");
-    console.log(apiResponse.data.statuses);
+    // console.log("@@@@@@@@@@@@");
+    // console.log(apiResponse.data.statuses);
 
-    const tweets = apiResponse.data.statuses
+    const tweets = apiResponse.data.statuses;
 
-    res.status(200).json({ tweets })
-
+    res.status(200).json({ tweets });
   } catch (error) {
     console.log(error);
   }
 }
-
-

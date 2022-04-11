@@ -4,9 +4,7 @@ import { Box } from "@chakra-ui/react";
 export const Timeline = () => {
   return (
     <>
-      <Box w={"xl"}>
-        <Tweets />
-      </Box>
+      <Tweets />
     </>
   );
 };
