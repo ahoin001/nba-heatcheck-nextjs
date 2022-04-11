@@ -24,7 +24,7 @@ export default function Home() {
         <title>NBA Stat Tracker</title>
         <meta name="description" content="Deep player stats with visual data" />
       </Head>
-      <Box p={6} mb={"10"} bg={bg} width="full">
+      <Box p={6} mb={"10"} bg={bg} mx={"auto"}>
         <IconButton
           pos="fixed"
           zIndex={2}

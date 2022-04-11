@@ -16,6 +16,7 @@ export const LastTenGames = ({ LastTenGames }) => {
 
   //? If the props aren't loaded yet, display loading component
   if (JSON.stringify(LastTenGames) === "{}") {
+    // return "";
     return <Skeleton></Skeleton>;
   } else {
     // console.log("FROM LASTTENGAMES ****: ", LastTenGames);
