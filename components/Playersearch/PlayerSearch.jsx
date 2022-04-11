@@ -30,10 +30,12 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
   });
 
   //   Query to call for player information on submition
+  // Should not fire on mount due to enabled : false
   const { refetch, isFetching } = useQuery(
     ["playerInfo"],
     () => getSelectedPlayerInfo(nbaPlayer.selectedOption.value),
     {
+      enabled: false,
       onSuccess: (res) => {
         console.log("AFTER SUCCESS, response", res);
         const [playerInfo, lastTenGamesInfo] = res;
@@ -44,8 +46,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           lastTenGamesInfo: { ...lastTenGamesInfo },
         });
       },
-    },
-    { enabled: false }
+    }
   );
 
   //   Set the selected nba player choice i proper format to app state to be used in other components
