@@ -119,15 +119,15 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
         </Center>
       ) : (
         <>
-          {/* <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
+          <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
-          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "}
+          {/* <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "} */}
           {isFetchingTweets ? (
             "LOADING"
           ) : (
             <Timeline fetchedTweets={allRetrievedTweets} />
-          )} */}
+          )}
         </>
       )}
     </Box>
