@@ -1,4 +1,4 @@
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { ChakraProvider, Container, CSSReset } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import theme from "../theme";

@@ -15,8 +15,9 @@ a {
   box-sizing: border-box;
 }
 
-.pop {
-  color: yellow;
+#__next {
+  /* display:flex */
+  border: 1px solid orange
 }
 
 /********************************************************
