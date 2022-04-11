@@ -185,10 +185,10 @@ Styling for Tweet
 }
 
 .tweetContainer-tweet-timestamp {
-  color: #6B7280; 
+  color: #6b7280;
   font-size: 0.875rem;
-  line-height: 1.25rem; 
-  
+  line-height: 1.25rem;
+
   /*TODO Add hover underline  */
 }
 

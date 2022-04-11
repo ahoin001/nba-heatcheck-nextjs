@@ -1,7 +1,7 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import theme from '../theme'
+import theme from "../theme";
 
 import "../styles/globals.css";
 
@@ -12,13 +12,14 @@ function MyApp({ Component, pageProps }) {
         refetchOnWindowFocus: false,
         refetchOnmount: false,
         refetchOnReconnect: false,
-        retry: false
+        retry: false,
       },
     },
   });
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
+        <CSSReset />
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} />
       </ChakraProvider>

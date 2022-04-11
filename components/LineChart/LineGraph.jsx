@@ -17,8 +17,8 @@ import {
 } from "recharts";
 
 export const LineGraph = ({ LastTenGames }) => {
-  console.log("-------------------------------------");
-  console.log(LastTenGames);
+  // console.log("-------------------------------------");
+  // console.log(LastTenGames);
   const [selectedOptionOne, setSelectedOptionOne] = useState({
     value: "PPG",
     label: "Points",

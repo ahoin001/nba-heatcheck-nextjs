@@ -1,7 +1,7 @@
 import { getPlayerByName, getPlayerStats, getPlayerTeam } from "./NBAApi";
 
 export const getSelectedPlayerInfo = async (playerName) => {
-  console.log("GETTING SELECTED PLAYERINFO%%%%%%%%%%%%%%%%");
+  console.log("FETCHING SUBMITTED PLAYERINFO%%%%%%%%%%%%%%%%");
   // Hold Values and not have to repeatedly call state after to reference data
   let playerInfo = {};
 

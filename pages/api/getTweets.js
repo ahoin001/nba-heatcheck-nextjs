@@ -3,7 +3,7 @@ import axios from "axios";
 export default async function (req, res) {
   try {
     const response = await axios.get(
-      `https://api.twitter.com/2/tweets/search/recent?query=-is%3Areply%20-is%3Aquote%20-is%3Aretweet%20lebron&max_results=15&tweet.fields=id,lang`,
+      `https://api.twitter.com/2/tweets/search/recent?query=-is%3Areply%20-is%3Aquote%20-is%3Aretweet%20lebron&max_results=10&tweet.fields=id,lang`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
