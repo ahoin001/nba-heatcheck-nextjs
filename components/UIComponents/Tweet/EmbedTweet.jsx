@@ -2,10 +2,8 @@ import { TwitterTweetEmbed } from "react-twitter-embed";
 import { Box } from "@chakra-ui/react";
 const EmbedTweet = ({ tweetId }) => {
   return (
-    <Box width={"md"}>
+    <Box width={{ base: "280px", md: "380px" }}>
       <TwitterTweetEmbed
-      
-      theme="dark"
         tweetId={tweetId}
         // options={{ transform: "translateZ(0)" }}
       />

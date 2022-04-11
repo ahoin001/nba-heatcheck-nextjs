@@ -1,10 +1,9 @@
 import { Tweets } from "../UIComponents/Tweet/Tweets";
-import { Box } from "@chakra-ui/react";
 
-export const Timeline = () => {
+export const Timeline = ({ fetchedTweets }) => {
   return (
     <>
-      <Tweets />
+      <Tweets fetchedTweets={fetchedTweets} />
     </>
   );
 };

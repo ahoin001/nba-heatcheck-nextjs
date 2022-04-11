@@ -18,9 +18,9 @@ export const LastTenGames = ({ LastTenGames }) => {
   if (JSON.stringify(LastTenGames) === "{}") {
     return <Skeleton></Skeleton>;
   } else {
-    console.log("FROM LASTTENGAMES ****: ", LastTenGames);
-    console.log("===========");
-    console.log("FROM LASTTENGAMES ****: ", LastTenGames.games);
+    // console.log("FROM LASTTENGAMES ****: ", LastTenGames);
+    // console.log("===========");
+    // console.log("FROM LASTTENGAMES ****: ", LastTenGames.games);
     // ** Change how much informatino displayed judged by screen size
     const statRows = LastTenGames.games.map((game, index) => {
       if (isLessThan800) {

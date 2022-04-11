@@ -1,9 +1,11 @@
 import axios from "axios";
 
 export default async function (req, res) {
+  console.log("+++++++++++ RECIEEEVED", req.query);
+
   try {
     const response = await axios.get(
-      `https://api.twitter.com/2/tweets/search/recent?query=-is%3Areply%20-is%3Aquote%20-is%3Aretweet%20lebron&max_results=10&tweet.fields=id,lang`,
+      `https://api.twitter.com/2/tweets/search/recent?query=-is%3Areply%20-is%3Aquote%20-is%3Aretweet%20${req.query.keyWord}&max_results=10&tweet.fields=id,lang`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
@@ -20,3 +22,5 @@ export default async function (req, res) {
     res.end(JSON.stringify(error));
   }
 }
+
+// TODO Maybe fetch the tweets batched with fetching playerInfo to get all info at once

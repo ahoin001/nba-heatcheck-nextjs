@@ -5,7 +5,7 @@ export const getSelectedPlayerInfo = async (playerName) => {
   // Hold Values and not have to repeatedly call state after to reference data
   let playerInfo = {};
 
-  console.log("FROM UTILITY: RECIEVED PLAYERNAME OBJECT THING: ", playerName);
+  // console.log("FROM UTILITY: RECIEVED PLAYERNAME OBJECT THING: ", playerName);
 
   let playerFirstName = playerName.split(" ")[0];
   // console.log('Player First Name:', playerFirstName);
@@ -21,7 +21,7 @@ export const getSelectedPlayerInfo = async (playerName) => {
     playerLastName
   );
 
-  console.log("I AM RETURNED FROM GETPLAYER BY NAME ", returnedPlayerByName);
+  // console.log("I AM RETURNED FROM GETPLAYER BY NAME ", returnedPlayerByName);
 
   playerInfo.currentPlayer = returnedPlayerByName;
 
@@ -33,8 +33,6 @@ export const getSelectedPlayerInfo = async (playerName) => {
   const lastTenGamesPlayerPlayed = await getPlayerStats(
     playerInfo.currentPlayer.playerId
   );
-
-
 
   // Use object to organize data to find averages later
   let lastTenGamesInfo = {};
@@ -128,9 +126,9 @@ export const getSelectedPlayerInfo = async (playerName) => {
 
   // playerInfo.lastTenGamesInfo = lastTenGamesInfo;
 
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&: ", lastTenGamesInfo);
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&: ", playerInfo);
+  // console.log("&&&&&&&&&&&&&&&&&&&&&&&: ", lastTenGamesInfo);
+  // console.log("&&&&&&&&&&&&&&&&&&&&&&&: ", playerInfo);
 
-  return [playerInfo,lastTenGamesInfo]
+  return [playerInfo, lastTenGamesInfo];
   // return lastTenGamesInfo;
 };

@@ -50,13 +50,10 @@ export async function getAllNBAPlayers() {
 
       // Get list of all players names for suggestion box
       let formattedPlayerNameData = playersAsArray.map(function (player) {
-        // return List of player full names
-        // TODO Would like space between names but need to figure how to make
-        // Input component ignore spaces or create a new component
         return `${player.firstName} ${player.lastName}`;
       });
 
-      console.log(formattedPlayerNameData);
+      // console.log('Formatted Player Names: ', formattedPlayerNameData);
       return formattedPlayerNameData;
     })
     .catch((error) => {
@@ -65,7 +62,6 @@ export async function getAllNBAPlayers() {
 }
 
 export async function getPlayerTeam(teamID) {
-  // await
   return axios({
     method: "GET",
     url: `${baseUrl}/teams/teamId/${teamID}`,

@@ -1,45 +1,36 @@
-import { useState, useEffect } from "react";
-import { background, Flex, HStack } from "@chakra-ui/react";
+import { background, Center, Flex, HStack } from "@chakra-ui/react";
+
 import EmbedTweet from "./EmbedTweet";
-import axios from "axios";
 
-export const Tweets = () => {
-  const [allTweets, setallTweets] = useState([]);
+export const Tweets = ({ fetchedTweets }) => {
+  console.log("TWEETS VARIABLE FROM FETCH: ", fetchedTweets);
 
-  const fetchTwitter = async () => {
-    try {
-      const res = await axios.get("/api/getTweets");
-
-      console.log("+++++++++++++++THE DATA: ", res.data);
-
-      setallTweets(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchTwitter();
-  }, []);
-
-  const tweetsForTimeLine = allTweets.map((tweet) => {
-    if (tweet.lang === "en") {
-      //   console.log("MAPPING DATA THIS IS OBJECT", tweet);
-      return <EmbedTweet key={tweet.id} tweetId={tweet.id} />;
-    }
-  });
+  let tweetsForTimeLine;
+  // When fetchedtweets array is available, map through to create tweets
+  {
+    Array.isArray(fetchedTweets)
+      ? (tweetsForTimeLine = fetchedTweets.map((tweet) => {
+          if (tweet.lang === "en") {
+            console.log("MAPPING DATA THIS IS OBJECT", tweet);
+            return <EmbedTweet key={tweet.id} tweetId={tweet.id} />;
+          }
+        }))
+      : "";
+  }
 
   return (
+    //   <Center></Center>
     <HStack
-      maxW={{ base: "3xs", md: "75%" }}
+        // maxW={{ base: "3xs", md: "70%" }}
+      w={{ base: '500px', md: '1000px',}}
       justify={"space-around"}
       align="center"
       wrap={"wrap"}
-    //   bg={"blackAlpha.400"}
-    //   backdropFilter="auto"
-    //   backdropBlur="6px"
+      bg={"gray.100"}
+      backdropFilter="auto"
+      backdropBlur="8px"
     >
-      {tweetsForTimeLine}
+      {tweetsForTimeLine ? tweetsForTimeLine : ""}
     </HStack>
   );
 };

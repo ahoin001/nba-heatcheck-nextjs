@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
-import { Box, Center, Divider, Spinner, VStack } from "@chakra-ui/react";
+import { Box, Center, Spinner, VStack } from "@chakra-ui/react";
+import { Timeline } from "../Timeline/Timeline";
 
 import { SubmitButton } from "../UIComponents/Button";
 import { ComboBox } from "../UIComponents/ComboBoxSelect";
@@ -10,9 +12,12 @@ import { LineGraph } from "../LineChart/LineGraph";
 
 import { getAllNBAPlayers } from "../../util/NBAApi";
 import { getSelectedPlayerInfo } from "../../util/UtilityFun";
+import { getTweetsWithKeyWord } from "../../util/TwitterApiRequests";
 import { LastTenGames } from "../LastTenGames/LastTenGames";
 
 export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
+  const [allRetrievedTweets, setallRetrievedTweets] = useState("");
+
   // Query to get all plaeyers for select box
   const {
     data: playerNames,
@@ -29,6 +34,22 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
       }),
   });
 
+  const { refetch: fetchTweets, isFetching: isFetchingTweets } = useQuery(
+    ["tweetsWithKeyWord"],
+    () => getTweetsWithKeyWord(nbaPlayer.selectedOption.value),
+    {
+      enabled: false,
+      onSuccess: (res) => {
+        console.log(
+          "$$$$$$$$$$$$$$$$$$$$$$$$$$$AFTER SUCCESS GETTING TWEETS, response",
+          res.data
+        );
+        // const [playerInfo, lastTenGamesInfo] = res;
+
+        setallRetrievedTweets(res.data);
+      },
+    }
+  );
   //   Query to call for player information on submition
   // Should not fire on mount due to enabled : false
   const { refetch, isFetching } = useQuery(
@@ -45,6 +66,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           playerInfo: { ...playerInfo },
           lastTenGamesInfo: { ...lastTenGamesInfo },
         });
+        fetchTweets();
       },
     }
   );
@@ -100,7 +122,12 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
-          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />
+          <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "}
+          {isFetchingTweets ? (
+            "LOADING"
+          ) : (
+            <Timeline fetchedTweets={allRetrievedTweets} />
+          )}
         </>
       )}
     </Box>
