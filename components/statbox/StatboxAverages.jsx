@@ -18,7 +18,7 @@ export const StatboxAverages = ({
   return (
     <VStack 
     // bg={"yellow"}  
-    width={["400px","500px","700px","900px"]} 
+    // width={["400px","500px","700px","900px"]} 
     mx="auto">
       <Heading
         fontSize={["2xl", "3xl", "4xl", "5xl"]}
@@ -31,7 +31,7 @@ export const StatboxAverages = ({
       <Flex
         // bg={"blue"}
         justify={"center"}
-        width={["400px","550px","700px","1000px"]}
+        // width={["400px","550px","700px","1000px"]}
         wrap={"wrap"}
         px={[3, 6, 9]}
         mb={9}

@@ -98,7 +98,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
 
   return (
     <Box>
-      <VStack p={4} >
+      <VStack p={4}  >
         {" "}
         <ComboBox
           value={{
@@ -121,13 +121,13 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
         <>
           <PlayerInfo playerInfo={nbaPlayer.playerInfo} />
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
-          <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
+          {/* <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} /> */}
           {/* <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "} */}
-          {isFetchingTweets ? (
+          {/* {isFetchingTweets ? (
             "LOADING"
           ) : (
             <Timeline fetchedTweets={allRetrievedTweets} />
-          )}
+          )} */}
         </>
       )}
     </Box>
