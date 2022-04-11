@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function (req, res) {
+export default async function getTweets(req, res) {
   console.log("+++++++++++ RECIEEEVED", req.query);
 
   try {
