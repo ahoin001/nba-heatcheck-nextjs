@@ -17,8 +17,8 @@ import {
 } from "recharts";
 
 export const LineGraph = ({ LastTenGames }) => {
-  console.log("-------------------------------------");
-  console.log(LastTenGames);
+  // console.log("-------------------------------------");
+  // console.log(LastTenGames);
   const [selectedOptionOne, setSelectedOptionOne] = useState({
     value: "PPG",
     label: "Points",
@@ -33,11 +33,9 @@ export const LineGraph = ({ LastTenGames }) => {
   }
   return (
     <>
-      <VStack p={4} my={12}>
+      <VStack p={4} my={12} spacing={12}>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
-
         <Heading> Visual Stats </Heading>
-
         <ComboBox
           listOfOptions={options}
           value={selectedOptionOne}
@@ -48,7 +46,6 @@ export const LineGraph = ({ LastTenGames }) => {
           }
           placeholderText="Select a stat"
         />
-
         <ComboBox
           listOfOptions={options}
           value={selectedOptionTwo}
@@ -58,43 +55,47 @@ export const LineGraph = ({ LastTenGames }) => {
             setSelectedOptionTwo(userSelectedOption)
           }
           placeholderText="Compare a stat!"
-        />
-
-        {/* <Box></Box> */}
-        <ResponsiveContainer width="95%" height={400}>
-          {JSON.stringify(LastTenGames) !== "{}" ? (
-            <LineChart
-              data={statToShow(LastTenGames)}
-              margin={{
-                top: 30,
-                right: 30,
-                left: 0,
-                bottom: 0,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey={selectedOptionOne.label}
-                stroke="#8884d8"
-              />
-
-              <Line
-                type="monotone"
-                dataKey={selectedOptionTwo.label}
-                stroke="green"
-              />
-            </LineChart>
-          ) : (
-            " "
-          )}
-        </ResponsiveContainer>
+        />{" "}
       </VStack>
+
+      {/* <Box></Box> */}
+      <ResponsiveContainer 
+      width="99%" 
+      // aspect={2} 
+      height={350}
+      >
+        {JSON.stringify(LastTenGames) !== "{}" ? (
+          <LineChart
+            data={statToShow(LastTenGames)}
+            margin={{
+              top: 30,
+              right: 30,
+              // left: -30,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey={selectedOptionOne.label}
+              stroke="#8884d8"
+            />
+
+            <Line
+              type="monotone"
+              dataKey={selectedOptionTwo.label}
+              stroke="green"
+            />
+          </LineChart>
+        ) : (
+          " "
+        )}
+      </ResponsiveContainer>
     </>
   );
 };

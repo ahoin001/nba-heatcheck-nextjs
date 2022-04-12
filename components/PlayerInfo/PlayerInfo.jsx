@@ -4,7 +4,7 @@ export const PlayerInfo = ({ playerInfo }) => {
   if (JSON.stringify(playerInfo) === "{}") {
     return "";
   } else {
-    console.log("PLAYER INFO PARMA: ", playerInfo);
+    // console.log("PLAYER INFO PARMA: ", playerInfo);
     return (
       <>
         <Box my={12}>

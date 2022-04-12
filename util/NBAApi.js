@@ -23,9 +23,6 @@ export async function getPlayerByName(playerFirstName, playerLastName) {
         }
       );
 
-      // TODO if alot of players have same name, may add logic to deal with this
-      // console.log(`THE PLAYER WITH THIS FULL NAME `, listOfMatchedPlayers[0]);
-
       // When then is called on the outer function, this is what will be returned
       return listOfMatchedPlayers[0];
     })
@@ -36,7 +33,7 @@ export async function getPlayerByName(playerFirstName, playerLastName) {
 
 // Retrieves list of all players in NBA history and save it in state
 export async function getAllNBAPlayers() {
-  console.log("STARTING THE CALL");
+  // console.log("STARTING THE get all nbaPlayers");
   return await axios({
     method: "GET",
     url: `${baseUrl}/players/country/USA`,
@@ -49,17 +46,14 @@ export async function getAllNBAPlayers() {
     .then((response) => {
       // Should be array of ALl players in NBA history
       let playersAsArray = response.data.api.players;
-      console.log(playersAsArray);
+      // console.log(playersAsArray);
 
       // Get list of all players names for suggestion box
       let formattedPlayerNameData = playersAsArray.map(function (player) {
-        // return List of player full names
-        // TODO Would like space between names but need to figure how to make
-        // Input component ignore spaces or create a new component
         return `${player.firstName} ${player.lastName}`;
       });
 
-      console.log(formattedPlayerNameData);
+      // console.log('Formatted Player Names: ', formattedPlayerNameData);
       return formattedPlayerNameData;
     })
     .catch((error) => {
@@ -68,7 +62,6 @@ export async function getAllNBAPlayers() {
 }
 
 export async function getPlayerTeam(teamID) {
-  // await
   return axios({
     method: "GET",
     url: `${baseUrl}/teams/teamId/${teamID}`,
