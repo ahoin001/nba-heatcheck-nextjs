@@ -19,20 +19,20 @@ export const Tweets = ({ fetchedTweets }) => {
   }
 
   return (
-    <Center>
-      {" "}
+
       <HStack
         // maxW={{ base: "3xs", md: "70%" }}
         // w={{ base: "500px", md: "1000px" }}
+        py={10}
         justify={"space-around"}
         align="center"
         wrap={"wrap"}
-        bg={"gray.100"}
+        // bg={"gray.100"}
         backdropFilter="auto"
         backdropBlur="8px"
       >
         {tweetsForTimeLine ? tweetsForTimeLine : ""}
       </HStack>
-    </Center>
+
   );
 };

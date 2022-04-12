@@ -35,7 +35,7 @@ export default function Home() {
         // p={6}
         my={"10"}
         bg={bg}
-        sx={{ border: "1px solid blue" }}
+        // sx={{ border: "1px solid blue" }}
         maxW="container.xl"
       >
         <IconButton
@@ -54,7 +54,7 @@ export default function Home() {
           wrap={"wrap"}
           justify={"center"}
           align={"center"}
-          sx={{ border: "1px solid red" }}
+          // sx={{ border: "1px solid red" }}
         >
           <PlayerSearch nbaPlayer={nbaPlayer} setNbaPlayer={setNbaPlayer} />
         </Flex>
