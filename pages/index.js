@@ -2,17 +2,10 @@ import { useState } from "react";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 
 import Head from "next/head";
-import {
-  Box,
-  Center,
-  Flex,
-  useMediaQuery,
-  VStack,
-  Container,
-} from "@chakra-ui/react";
+import { Flex, Container } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/button";
-import { Timeline } from "../components/Timeline/Timeline";
+
 import { PlayerSearch } from "../components/Playersearch/PlayerSearch";
 
 export default function Home() {

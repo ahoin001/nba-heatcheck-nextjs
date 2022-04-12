@@ -98,7 +98,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
 
   return (
     <Box>
-      <VStack p={4}  >
+      <VStack p={4} spacing={10}>
         {" "}
         <ComboBox
           value={{
@@ -110,7 +110,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           nbaPlayer={nbaPlayer}
           placeholderText="Select a player..."
         />
-        <SubmitButton mt={4} onSubmit={refetch} isLoading={isFetching} />
+        <SubmitButton onSubmit={refetch} isLoading={isFetching} />
       </VStack>
 
       {isFetching ? (

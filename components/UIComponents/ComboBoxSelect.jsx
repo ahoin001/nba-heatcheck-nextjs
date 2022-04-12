@@ -11,7 +11,7 @@ export const ComboBox = ({ handleChange, listOfOptions, placeholderText }) => {
       // w={["sm", "md"]}
       // minW={"sm"}
       className="BIGCOW"
-      minW={isScreenWidthLessThan600 ? '300px' : 'xl'}
+      minW={isScreenWidthLessThan600 ? '300px' : '5xl'}
     >
       <Select
         size="lg"
