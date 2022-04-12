@@ -32,10 +32,10 @@ export const LastTenGames = ({ LastTenGames }) => {
               <Td textAlign={"center"}>{game.totReb}</Td>
               <Td textAlign={"center"}>{game.assists}</Td>
               <Td textAlign={"center"}>{game.steals}</Td>
-              <Td textAlign={"center"}>{game.blocks}</Td>
-              <Td textAlign={"center"}>{game.fga}</Td>
+              {/* <Td textAlign={"center"}>{game.blocks}</Td> */}
+              {/* <Td textAlign={"center"}>{game.fga}</Td>
               <Td textAlign={"center"}>{game.fgm}</Td>
-              <Td textAlign={"center"}>{game.fgp}</Td>
+              <Td textAlign={"center"}>{game.fgp}</Td> */}
             </Tr>
           );
         } else {
@@ -53,10 +53,10 @@ export const LastTenGames = ({ LastTenGames }) => {
               <Td textAlign={"center"} fontWeight={"bold"}>
                 {game.steals}
               </Td>
-              <Td textAlign={"center"} fontWeight={"bold"}>
+              {/* <Td textAlign={"center"} fontWeight={"bold"}>
                 {game.blocks}
-              </Td>
-              <Td textAlign={"center"} fontWeight={"bold"}>
+              </Td> */}
+              {/* <Td textAlign={"center"} fontWeight={"bold"}>
                 {game.fga}
               </Td>
               <Td textAlign={"center"} fontWeight={"bold"}>
@@ -64,7 +64,7 @@ export const LastTenGames = ({ LastTenGames }) => {
               </Td>
               <Td textAlign={"center"} fontWeight={"bold"}>
                 {game.fgp}
-              </Td>
+              </Td> */}
             </Tr>
           );
         }
@@ -161,10 +161,10 @@ export const LastTenGames = ({ LastTenGames }) => {
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               STL
             </Th>
-            <Th fontSize={"lg"} fontWeight={"extrabold"}>
+            {/* <Th fontSize={"lg"} fontWeight={"extrabold"}>
               BLK
-            </Th>
-            <Th fontSize={"lg"} fontWeight={"extrabold"}>
+            </Th> */}
+            {/* <Th fontSize={"lg"} fontWeight={"extrabold"}>
               FGA
             </Th>{" "}
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
@@ -172,7 +172,7 @@ export const LastTenGames = ({ LastTenGames }) => {
             </Th>
             <Th fontSize={"lg"} fontWeight={"extrabold"}>
               FG%
-            </Th>
+            </Th> */}
           </Tr>
         );
       } else {
@@ -234,11 +234,16 @@ export const LastTenGames = ({ LastTenGames }) => {
     const tableColumns = tableColumnsCompute();
 
     return (
-      <VStack p={6} align={"center"} justify={"center"} wrap={"wrap"}>
+      <VStack
+        align={"center"}
+        justify={"center"}
+        wrap={"wrap"}
+        // sx={{ border: "1px solid yellow" }}
+      >
         <Heading mb={6}> Last Ten Games </Heading>
 
         <Table
-          // sx={{ overflowX: "scroll" }}
+          // sx={{ border: "1px solid yellow" }}
           // maxW={["20px"]}
           variant="striped"
           colorScheme="gray"
