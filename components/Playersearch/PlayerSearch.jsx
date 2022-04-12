@@ -124,7 +124,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
           <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "}
           {isFetchingTweets ? (
-            "LOADING"
+            <Spinner color="red.500" size={"xl"} />
           ) : (
             <Timeline fetchedTweets={allRetrievedTweets} />
           )}
