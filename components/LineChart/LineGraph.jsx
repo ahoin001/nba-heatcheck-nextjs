@@ -33,7 +33,7 @@ export const LineGraph = ({ LastTenGames }) => {
   }
   return (
     <>
-      <VStack p={4} my={12}>
+      <VStack p={4} my={12} spacing={12}>
         {/* <h1 style={{ color: '#eceff1' }}> LAST TEN GAMES </h1> */}
         <Heading> Visual Stats </Heading>
         <ComboBox
