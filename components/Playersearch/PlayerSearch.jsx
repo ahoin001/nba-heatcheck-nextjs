@@ -110,7 +110,7 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           nbaPlayer={nbaPlayer}
           placeholderText="Select a player..."
         />
-        <SubmitButton onSubmit={refetch} isLoading={isFetching} />
+        <SubmitButton mt={4} onSubmit={refetch} isLoading={isFetching} />
       </VStack>
 
       {isFetching ? (
