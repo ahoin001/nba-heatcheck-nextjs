@@ -22,7 +22,7 @@ export const Tweets = ({ fetchedTweets }) => {
     <Center>
       {" "}
       <HStack
-        maxW={{ base: "3xs", md: "70%" }}
+        // maxW={{ base: "3xs", md: "70%" }}
         // w={{ base: "500px", md: "1000px" }}
         justify={"space-around"}
         align="center"

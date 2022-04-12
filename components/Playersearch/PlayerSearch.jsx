@@ -123,11 +123,11 @@ export const PlayerSearch = ({ nbaPlayer, setNbaPlayer }) => {
           <BoxScore playerAvgs={nbaPlayer.lastTenGamesInfo} />
           <LineGraph LastTenGames={nbaPlayer.lastTenGamesInfo} />
           <LastTenGames LastTenGames={nbaPlayer.lastTenGamesInfo} />{" "}
-          {/* {isFetchingTweets ? (
+          {isFetchingTweets ? (
             "LOADING"
           ) : (
             <Timeline fetchedTweets={allRetrievedTweets} />
-          )} */}
+          )}
         </>
       )}
     </Box>

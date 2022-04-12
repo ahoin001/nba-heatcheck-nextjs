@@ -238,6 +238,7 @@ export const LastTenGames = ({ LastTenGames }) => {
         align={"center"}
         justify={"center"}
         wrap={"wrap"}
+        mt={12}
         // sx={{ border: "1px solid yellow" }}
       >
         <Heading mb={6}> Last Ten Games </Heading>
@@ -245,6 +246,7 @@ export const LastTenGames = ({ LastTenGames }) => {
         <Table
           // sx={{ border: "1px solid yellow" }}
           // maxW={["20px"]}
+          // p={4}
           variant="striped"
           colorScheme="gray"
         >
