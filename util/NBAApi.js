@@ -8,8 +8,8 @@ export async function getPlayerByName(playerFirstName, playerLastName) {
     url: `${baseUrl}/players/firstName/${playerFirstName}`,
     headers: {
       "content-type": "application/octet-stream",
-      "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-      "x-rapidapi-key": "4cec6170bcmsh5d6a0ea78315a5ep10f15cjsn59ef0231e8e4",
+      "x-rapidapi-host": process.env.RAPID_API_HOST,
+      "x-rapidapi-key": process.env.RAPID_API_KEY,
     },
   })
     .then((playerList) => {
@@ -39,8 +39,8 @@ export async function getAllNBAPlayers() {
     url: `${baseUrl}/players/country/USA`,
     headers: {
       "content-type": "application/octet-stream",
-      "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-      "x-rapidapi-key": "4cec6170bcmsh5d6a0ea78315a5ep10f15cjsn59ef0231e8e4",
+      "x-rapidapi-host": process.env.RAPID_API_HOST,
+      "x-rapidapi-key": process.env.RAPID_API_KEY,
     },
   })
     .then((response) => {
@@ -67,8 +67,8 @@ export async function getPlayerTeam(teamID) {
     url: `${baseUrl}/teams/teamId/${teamID}`,
     headers: {
       "content-type": "application/octet-stream",
-      "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-      "x-rapidapi-key": "4cec6170bcmsh5d6a0ea78315a5ep10f15cjsn59ef0231e8e4",
+      "x-rapidapi-host": process.env.RAPID_API_HOST,
+      "x-rapidapi-key": process.env.RAPID_API_KEY,
     },
   })
     .then((response) => {
@@ -86,8 +86,8 @@ export async function getPlayerStats(playerID) {
     url: `${baseUrl}/statistics/players/playerId/${playerID}`,
     headers: {
       "content-type": "application/octet-stream",
-      "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-      "x-rapidapi-key": "4cec6170bcmsh5d6a0ea78315a5ep10f15cjsn59ef0231e8e4",
+      "x-rapidapi-host": process.env.RAPID_API_HOST,
+      "x-rapidapi-key": process.env.RAPID_API_KEY,
     },
   })
     .then((response) => {
